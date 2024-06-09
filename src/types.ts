@@ -1,27 +1,20 @@
 type Item = {
-    id: number,
-    icone: string,
-    nome: string,
-    tipo: string,
-    descricao: string
+    itemId: number
+    itemIcone: string,
+    itemNome: string,
+    itemTipo: string,
+    itemDescricao: string;
 }
 
 type User = {
-    id: number,
-    nome: string,
-    password: string
-    characters: Character[]
+    userId: number,
+    userNome: string,
+    userPassword: string
 }
 
 type Character = {
-    id: number,
-    idade: number,
-    personalidade: string,
-    defeitos: string,
-    trejeitos: string,
-    objetivo: string,
-    historia: string,
-    porqueEntrou: string,
+    personagemId: number,
+    personagemNome: string,
     tipoAura: string,
     vitalidade: number,
     defesa: number,
@@ -32,7 +25,7 @@ type Character = {
     forcaFisica: number,
     despertarNivel: number,
     intensidadeAura: string,
-    inventory: Item[]
+    pontos: number
 }
 
 export type { Item, User, Character }
