@@ -1,24 +1,42 @@
 import { ChangeEvent, MouseEvent, useState } from 'react';
-import '../styles/Formulario.scss'
-import { User } from '../types';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { User } from '../types';
+
+import '../styles/Formulario.scss'
 
 const Cadastro = () => {
 
     const [user, setUser] = useState<User>();
 
     const [confirmarSenha, setConfirmarSenha] = useState<string>()
+    
+    const [submiting, setSubmiting] = useState<boolean>(false)
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         setUser({ ...user, [name]: value })
     }
 
-    const handleSubmit = (e: MouseEvent<HTMLInputElement>) => {
+    const handleSubmit = async (e: MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
 
+        setSubmiting(true)
         if (user?.userPassword == confirmarSenha) {
-
+            const response = await toast.promise(
+                fetch("http://localhost:8080/User" , {
+                    method: "POST"
+                }).then(response => {
+                    return response.json
+                }).finally(() => setSubmiting(false)),
+                {
+                  pending: 'Enviando dados cadastrais',
+                  success: 'Usuário cadastrado 👌',
+                  error: 'Ocorreu um erro 🤯'
+                }
+            );
+            // TODO implementar cadastro
+            localStorage.setItem("logado", "true")
         }
     }
 
@@ -45,7 +63,7 @@ const Cadastro = () => {
 
                 <div className="confirmation">
                     <Link className='link' to="/Login">Já tenho uma conta</Link>
-                    <input className='sendForm' onClick={handleSubmit} type="submit" name="enviar" id="enviar" />
+                    <input disabled={submiting} className="sendForm" onClick={handleSubmit} type="submit" name="enviar" id="enviar" />
                 </div>
             </form>
         </section>

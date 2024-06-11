@@ -1,6 +1,6 @@
 import { ChangeEvent, MouseEvent, useState } from "react"
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { User } from "../types";
 
 import '../styles/Formulario.scss'
@@ -9,14 +9,32 @@ const Login = () => {
 
     const [user, setUser] = useState<User>();
 
+    const [submiting, setSubmiting] = useState<boolean>(false)
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         setUser({ ...user, [name]: value })
     }
 
-    const handleSubmit = (e: MouseEvent<HTMLInputElement>) => {
+    const handleSubmit = async (e: MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
-        
+        setSubmiting(true)
+
+        const response = await toast.promise(
+            fetch("http://localhost:8080/Authenticate", {
+                method: "GET"
+            }).then(response => {
+                return response.json
+            }).finally(() => setSubmiting(false)),
+            {
+                pending: 'Logando',
+                success: 'Logado com sucesso 👌',
+                error: 'Ocorreu um erro 🤯'
+            }
+        );
+
+        //TODO implementar login
+        localStorage.setItem("logado", "true")
     }
 
     return (
@@ -33,12 +51,11 @@ const Login = () => {
                         <label htmlFor="senha">Senha</label>
                         <input placeholder="********" value={user?.userPassword} onChange={handleChange} id="senha" name="userPassword" required type="password" />
                     </div>
-
                 </div>
 
                 <div className="confirmation">
                     <Link className="link" to="/Cadastro">Não tenho uma conta</Link>
-                    <input className="sendForm" onClick={handleSubmit} type="submit" name="enviar" id="enviar" />
+                    <input disabled={submiting} className="sendForm" onClick={handleSubmit} type="submit" name="enviar" id="enviar" />
                 </div>
             </form>
         </section>
