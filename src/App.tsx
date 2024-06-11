@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { Bounce, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+import './styles/Config.scss'
 import 'normalize.css'
 
 import Login from "./screens/Login"
 import Cadastro from "./screens/Cadastro"
 import Home from "./screens/Home"
 import Personagem from "./screens/Personagem"
-import 'react-toastify/dist/ReactToastify.css';
-import { Bounce, ToastContainer } from "react-toastify"
 
 
 const App = () => {
