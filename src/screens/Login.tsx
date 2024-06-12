@@ -3,7 +3,10 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { User } from "../types";
 
+import trees from '../assets/forest-background.png'
+
 import '../styles/Formulario.scss'
+import Header from "../components/Header";
 
 const Login = () => {
 
@@ -39,6 +42,7 @@ const Login = () => {
 
     return (
         <section className="formulario">
+            <Header/>
             <h2>Login</h2>
             <form>
                 <div className="fields">
@@ -58,6 +62,7 @@ const Login = () => {
                     <input disabled={submiting} className="sendForm" onClick={handleSubmit} type="submit" name="enviar" id="enviar" />
                 </div>
             </form>
+            <img className="backgroundTrees" src={trees} alt="" />
         </section>
     )
 }

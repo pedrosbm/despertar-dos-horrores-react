@@ -1,11 +1,11 @@
-//Tela com o inventário status e header.
+//Tela de início, personagens
 
 
 const Home = () => {
     return(
-        <>
+        <section className="home">
             
-        </>
+        </section>
     )
 }
 

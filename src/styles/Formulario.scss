@@ -1,16 +1,24 @@
 .formulario {
-    background: rgb(2,13,28);
-    background: linear-gradient(236deg, rgba(2,13,28,1) 0%, rgba(3,13,27,1) 61%, rgba(38,13,38,1) 100%); 
+    background: rgb(18,44,78);
+    background: linear-gradient(236deg, rgba(18,44,78,1) 0%, rgba(8,25,48,1) 30%, rgba(60,15,60,1) 95%); 
     display: flex;
     justify-content: center;
     color: white;
     align-items: center;
     flex-direction: column;
     height: 100vh;
+
+    .backgroundTrees    {
+        position: absolute;
+        bottom: 0;
+        z-index: 0;
+        width: 100vw;
+    }
     
     form {
+        z-index: 1;
         color: black;
-        min-width: 25rem;
+        min-width: 30rem;
         background-color: white;
         padding: 3rem;
         display: flex;
@@ -55,15 +63,15 @@
                 transition: 200ms;
                 color: white;
                 cursor: pointer;
-                border: none;
+                border: 1px solid rgb(88, 43, 88);
                 padding: 1rem;
                 background-color: rgb(88, 43, 88);
                 border-radius: 2rem;
             }
 
             .sendForm:hover {
-                box-shadow: 1px 1px 20px 1px rgb(163, 71, 163);
-                background-color: rgb(120, 59, 120);
+                box-shadow: 1px 1px 20px 0px rgb(129, 52, 129); 
+                background-color: rgb(129, 52, 129);    
             }
         }
     }

@@ -1,16 +1,19 @@
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { User } from '../types';
 
+import trees from '../assets/forest-background.png'
+
 import '../styles/Formulario.scss'
+import Header from '../components/Header';
 
 const Cadastro = () => {
 
     const [user, setUser] = useState<User>();
 
     const [confirmarSenha, setConfirmarSenha] = useState<string>()
-    
+
     const [submiting, setSubmiting] = useState<boolean>(false)
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,21 +21,24 @@ const Cadastro = () => {
         setUser({ ...user, [name]: value })
     }
 
-    const handleSubmit = async (e: MouseEvent<HTMLInputElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         setSubmiting(true)
         if (user?.userPassword == confirmarSenha) {
             const response = await toast.promise(
-                fetch("http://localhost:8080/User" , {
-                    method: "POST"
+                fetch("http://localhost:8080/User", {
+                    method: "POST",
+                    body: JSON.stringify(user)
                 }).then(response => {
                     return response.json
+                }).catch(json => {
+                    console.log(json)
                 }).finally(() => setSubmiting(false)),
                 {
-                  pending: 'Enviando dados cadastrais',
-                  success: 'Usuário cadastrado 👌',
-                  error: 'Ocorreu um erro 🤯'
+                    pending: 'Enviando dados cadastrais',
+                    success: 'Usuário cadastrado 👌',
+                    error: 'Ocorreu um erro 🤯',
                 }
             );
             // TODO implementar cadastro
@@ -42,8 +48,9 @@ const Cadastro = () => {
 
     return (
         <section className="formulario">
+            <Header />
             <h2>Cadastro</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="fields">
                     <div className="inputBox">
                         <label htmlFor="nome">Nome</label>
@@ -63,9 +70,10 @@ const Cadastro = () => {
 
                 <div className="confirmation">
                     <Link className='link' to="/Login">Já tenho uma conta</Link>
-                    <input disabled={submiting} className="sendForm" onClick={handleSubmit} type="submit" name="enviar" id="enviar" />
+                    <input disabled={submiting} className="sendForm" type="submit" name="enviar" id="enviar" />
                 </div>
             </form>
+            <img className="backgroundTrees" src={trees} alt="" />
         </section>
     )
 }
