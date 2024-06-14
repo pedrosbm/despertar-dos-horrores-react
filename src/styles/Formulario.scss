@@ -1,6 +1,18 @@
+@keyframes in {
+    from {
+        position: relative;
+        bottom: 20px;
+    }
+
+    to {
+        position: relative;
+        bottom: 0;
+    }
+}
+
 .formulario {
-    background: rgb(18,44,78);
-    background: linear-gradient(236deg, rgba(18,44,78,1) 0%, rgba(8,25,48,1) 30%, rgba(60,15,60,1) 95%); 
+    background: rgb(18, 44, 78);
+    background: linear-gradient(236deg, rgba(18, 44, 78, 1) 0%, rgba(8, 25, 48, 1) 30%, rgba(60, 15, 60, 1) 95%);
     display: flex;
     justify-content: center;
     color: white;
@@ -8,71 +20,80 @@
     flex-direction: column;
     height: 100vh;
 
-    .backgroundTrees    {
+    .backgroundTrees {
         position: absolute;
         bottom: 0;
         z-index: 0;
         width: 100vw;
     }
-    
-    form {
-        z-index: 1;
-        color: black;
-        min-width: 30rem;
-        background-color: white;
-        padding: 3rem;
+
+    h2 {
+        animation-name: in;
+        animation-duration: 400ms;
+    }
+
+}
+
+form {
+    animation-name: in;
+    animation-duration: 400ms;
+    animation-timing-function: ease;
+    z-index: 1;
+    color: black;
+    min-width: 30rem;
+    background-color: white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 9rem;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 100px 0px rgba(187, 112, 187, 0.73);
+
+    .fields {
         display: flex;
         flex-direction: column;
-        gap: 9rem;
-        border-radius: 1rem;
-        box-shadow: 1px 1px 100px 0px rgba(187, 112, 187, 0.73);
+        gap: 1rem;
 
-        .fields {
+        .inputBox {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 5px;
 
-            .inputBox   {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-
-                input   {
-                    padding: 0.5rem 1rem;
-                    border: 1.5px solid;
-                    border-radius: 2rem;
-                }
-
-                label   {
-                    position: relative;
-                    left: 16px;
-                }
-            }
-        }
-
-        .confirmation {
-            gap: 1rem;
-            display: flex;
-            flex-direction: column;
-
-            .link   {
-                color: rgb(158, 55, 158);
-            }
-
-            .sendForm   {
-                transition: 200ms;
-                color: white;
-                cursor: pointer;
-                border: 1px solid rgb(88, 43, 88);
-                padding: 1rem;
-                background-color: rgb(88, 43, 88);
+            input {
+                padding: 0.5rem 1rem;
+                border: 1.5px solid;
                 border-radius: 2rem;
             }
 
-            .sendForm:hover {
-                box-shadow: 1px 1px 20px 0px rgb(129, 52, 129); 
-                background-color: rgb(129, 52, 129);    
+            label {
+                position: relative;
+                left: 16px;
             }
+        }
+    }
+
+    .confirmation {
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        .link {
+            color: rgb(158, 55, 158);
+        }
+
+        .sendForm {
+            transition: 200ms;
+            color: white;
+            cursor: pointer;
+            border: 1px solid rgb(88, 43, 88);
+            padding: 1rem;
+            background-color: rgb(88, 43, 88);
+            border-radius: 2rem;
+        }
+
+        .sendForm:hover {
+            box-shadow: 1px 1px 20px 0px rgb(129, 52, 129);
+            background-color: rgb(129, 52, 129);
         }
     }
 }

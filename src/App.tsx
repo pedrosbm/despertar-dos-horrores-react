@@ -12,15 +12,15 @@ import Personagem from "./screens/Personagem"
 
 const App = () => {
 
-    return(
+    return (
         <Router>
             <Routes>
-                <Route path="/" Component={localStorage.getItem("logado") == "true" ? Home : Login}/>
-                <Route path="/Cadastro" Component={Cadastro}/>
+                <Route path="/" Component={Home} />
+                <Route path="/Cadastro" Component={Cadastro} />
                 <Route path="/Login" Component={Login} />
                 <Route path="/Personagem" Component={Personagem} />
             </Routes>
-            
+
             <ToastContainer
                 position="bottom-center"
                 autoClose={2300}
