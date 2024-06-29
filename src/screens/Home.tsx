@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
-import Header from "../components/Header"
 import { useEffect, useState } from "react"
 import { Character } from "../types"
+import { toast } from "react-toastify"
 import Cookies from "js-cookie"
-
 import "../styles/Home.scss"
 
-const apiUrl = import.meta.env.BASE_URL
+
+const apiUrl = import.meta.env.BASE_URL as string
 
 const Home = () => {
     // States & variables
@@ -18,16 +18,32 @@ const Home = () => {
 
     // functions
     useEffect(() => {
-        fetch(`${apiUrl}/Personagem/User/${localStorage.getItem("userId")}`, {
+        isLoggedIn &&
+        fetch(`${apiUrl}/Personagem/User/${Cookies.get("userId")}`, {
             method: "GET"
+        }).then(response => {
+            if(response.ok){
+                return response.json()
+            }
+            if(response.status == 404){
+                toast.info("Não foram encontrados personagens")
+            }
+        }).then((json : any)=> {
+            setPersonagens(json)
+        }).catch(err => {
+            console.error("Erro na requisição - ", err)
+            toast.error("Ocorreu um erro ao obter seus personagens, recarregue a página.", {autoClose: 5000})
         })
     }, [])
 
-    !isLoggedIn && navigate("Login")
+    // useEffect(() => {
+    //     !isLoggedIn && navigate("Login")
+    // }, [])
+
     return (
         <section className="home">
-            <Header />
-            <h2>Olá {localStorage.getItem("userNome")}</h2>
+            <HeaderSecundario />
+            <h2>Olá {}</h2>
             <h3>sua aventura o aguarda</h3>
             <div className="personagens">
                 {personagens?.map((personagem: Character) => (
@@ -35,6 +51,9 @@ const Home = () => {
                         <p>nome: {personagem.personagemNome}</p>
                     </div>
                 ))}
+                <div className="newCharacter">
+
+                </div>
             </div>
         </section>
     )

@@ -7,7 +7,7 @@ type User = {
 type Character = {
     personagemId?: number,
     personagemNome?: string,
-    personagemImagem: File,
+    personagemImagem: Blob,
     hp?: number,
     mp?: number,
     vitalidade?: number,
@@ -20,15 +20,7 @@ type Character = {
     despertarNivel?: number,
     intensidadeAura?: string,
     pontos?: number,
-    aura?: Aura,
     usuario?: User
 }
 
-type Aura = {
-    auraPrincipal?: string,
-    aurasSecundarias?: string[],
-    aurasTerciarias?: string[],
-    auraFinal?: string
-}
-
-export type { User, Character, Aura }
+export type { User, Character }

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../types";
@@ -12,12 +12,15 @@ import Header from "../components/Header";
 const apiUrl = import.meta.env.BASE_URL as string
 
 const Login = () => {
+    // states & vars
+    const [user, setUser] = useState<User>();
+    const [submiting, setSubmiting] = useState<boolean>(false)
+    const isLoggedIn = Cookies.get("logged") == "true"
+
+    // hooks
     const navigate = useNavigate()
 
-    const [user, setUser] = useState<User>();
-
-    const [submiting, setSubmiting] = useState<boolean>(false)
-
+    // functions
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         setUser({ ...user, [name]: value })
@@ -26,19 +29,13 @@ const Login = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubmiting(true)
-        const request = toast.loading("Enviando dados cadastrais...")
-
-        fetch(`${apiUrl}/User`, {
+        toast.promise(fetch(`${apiUrl}/User`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
         }).then(response => {
             if (response.ok) {
-                toast.update(request, { render: "Logado com sucesso!", type: "success", isLoading: false, autoClose: 2300 })
                 return response.json()
-            }
-            if (!response.ok) {
-                toast.update(request, { render: "Ocorreu um erro interno", type: "error", isLoading: false, autoClose: 2300 })
             }
         }).then((json: any) => {
             Cookies.set("logged", "true", { secure: true, sameSite: "Strict" })
@@ -47,9 +44,17 @@ const Login = () => {
         }).catch(error => {
             console.error("Erro ao fazer requisição - ", error)
             throw new Error
-        }).finally(() => setSubmiting(false));
+        }).finally(() => setSubmiting(false)), {
+            success: "Logado com sucesso",
+            error: "Ocorreu algum erro",
+            pending: "Enviando dados cadastrais"
+        })
     }
 
+    // useEffect(()=> {
+    //     isLoggedIn && navigate("Home")
+    // }, [])
+    
     return (
         <section className="formulario">
             <Header />
@@ -58,7 +63,7 @@ const Login = () => {
                 <div className="fields">
                     <div className="inputBox">
                         <label htmlFor="nome">Nome</label>
-                        <input placeholder="Nome" value={user?.userNome} onChange={handleChange} id="nome" name="userNome" required type="text" />
+                        <input placeholder="John Doe" value={user?.userNome} onChange={handleChange} id="nome" name="userNome" required type="text" />
                     </div>
 
                     <div className="inputBox">

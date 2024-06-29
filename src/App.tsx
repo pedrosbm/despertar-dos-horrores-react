@@ -23,7 +23,7 @@ const App = () => {
 
             <ToastContainer
                 position="bottom-left"
-                autoClose={2300}
+                autoClose={2500}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
@@ -31,8 +31,9 @@ const App = () => {
                 pauseOnFocusLoss={false}
                 draggable={false}
                 pauseOnHover={false}
-                theme="colored"
+                theme="dark"
                 transition={Bounce}
+                stacked={true}
             />
         </Router>
     )

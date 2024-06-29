@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
@@ -33,9 +33,7 @@ const Cadastro = () => {
         e.preventDefault()
         
         if (user?.userPassword == confirmarSenha) {
-            console.log("fazendo login")
             setSubmiting(true)
-            
             toast.promise(fetch(`${apiUrl}/User`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -61,7 +59,10 @@ const Cadastro = () => {
         }
     }
 
-    isLoggedIn && navigate("Home")
+    // useEffect(()=> {
+    //     isLoggedIn && navigate("Home")
+    // }, [])
+
     return (
         <section className="formulario">
             <Header />
@@ -70,12 +71,12 @@ const Cadastro = () => {
                 <div className="fields">
                     <div className="inputBox">
                         <label htmlFor="nome">Nome</label>
-                        <input placeholder="Nome" value={user?.userNome} onChange={handleChange} id="nome" name="userNome" required type="text" min={3}/>
+                        <input placeholder="John Doe" value={user?.userNome} onChange={handleChange} id="nome" name="userNome" required type="text" min={3}/>
                     </div>
 
                     <div className="inputBox">
                         <label htmlFor="senha">Senha</label>
-                        <input placeholder="********" value={user?.userPassword} onChange={handleChange} id="senha" name="userPassword" required type="password" />
+                        <input placeholder="********" value={user?.userPassword} onChange={handleChange} id="senha" name="userPassword"  required type="password" />
                     </div>
 
                     <div className="inputBox">
