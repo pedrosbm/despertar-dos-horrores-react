@@ -1,12 +1,12 @@
 @keyframes in {
     from {
         position: relative;
-        bottom: 20px;
+        top: 20px;
     }
 
     to {
         position: relative;
-        bottom: 0;
+        top: 0;
     }
 }
 
@@ -45,7 +45,7 @@ form {
     padding: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 9rem;
+    gap: 2rem;
     border-radius: 1rem;
     box-shadow: 1px 1px 100px 0px rgba(187, 112, 187, 0.73);
 
