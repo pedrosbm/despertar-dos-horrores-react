@@ -40,6 +40,7 @@ const Login = () => {
         }).then((json: any) => {
             Cookies.set("logged", "true", { secure: true, sameSite: "Strict" })
             Cookies.set("userId", json.userId, { secure: true, sameSite: "Strict" })
+            Cookies.set("userNome", json.userNome, { secure: true, sameSite: "Strict" })
             navigate("/")
         }).catch(error => {
             console.error("Erro ao fazer requisição - ", error)

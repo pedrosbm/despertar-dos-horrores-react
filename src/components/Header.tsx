@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 
 
-import "../styles/Header.scss"
+import styles from "../styles/Header.module.scss"
 
 const Header = () => {
     return (
-        <header className="cabeçalho">
-            <Link draggable="false" className="logo" to="/">
+        <header className={styles.cabeçalho}>
+            <Link draggable="false" className={styles.logo} to="/">
                 <h1>Despertar dos Horrores</h1>
             </Link>
         </header>

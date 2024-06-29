@@ -3,7 +3,11 @@ import { useEffect, useState } from "react"
 import { Character } from "../types"
 import { toast } from "react-toastify"
 import Cookies from "js-cookie"
+import HeaderSecundario from "../components/HeaderSecundario"
 import "../styles/Home.scss"
+import desert from "../assets/desert-background.png"
+import backgroundGradient from "../assets/degradê deserto.jpg"
+import CharacterCreateModal from "../components/CharacterCreateModal"
 
 
 const apiUrl = import.meta.env.BASE_URL as string
@@ -11,29 +15,36 @@ const apiUrl = import.meta.env.BASE_URL as string
 const Home = () => {
     // States & variables
     const [personagens, setPersonagens] = useState<Character[]>()
+    const [modal, setModal] = useState<boolean>(false)
     const isLoggedIn = Cookies.get("logged") == "true"
 
     // Hooks
     const navigate = useNavigate()
 
     // functions
+
+    const toggleModal = () => {
+        console.log(modal)
+        setModal(!modal)
+    }
+
     useEffect(() => {
         isLoggedIn &&
-        fetch(`${apiUrl}/Personagem/User/${Cookies.get("userId")}`, {
-            method: "GET"
-        }).then(response => {
-            if(response.ok){
-                return response.json()
-            }
-            if(response.status == 404){
-                toast.info("Não foram encontrados personagens")
-            }
-        }).then((json : any)=> {
-            setPersonagens(json)
-        }).catch(err => {
-            console.error("Erro na requisição - ", err)
-            toast.error("Ocorreu um erro ao obter seus personagens, recarregue a página.", {autoClose: 5000})
-        })
+            fetch(`${apiUrl}/Personagem/User/${Cookies.get("userId")}`, {
+                method: "GET"
+            }).then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                if (response.status == 404) {
+                    toast.info("Não foram encontrados personagens")
+                }
+            }).then((json: any) => {
+                setPersonagens(json)
+            }).catch(err => {
+                console.error("Erro na requisição - ", err)
+                toast.error("Ocorreu um erro ao obter seus personagens, recarregue a página.", { autoClose: 5000 })
+            })
     }, [])
 
     // useEffect(() => {
@@ -41,21 +52,34 @@ const Home = () => {
     // }, [])
 
     return (
-        <section className="home">
+        <div>
             <HeaderSecundario />
-            <h2>Olá {}</h2>
-            <h3>sua aventura o aguarda</h3>
-            <div className="personagens">
-                {personagens?.map((personagem: Character) => (
-                    <div className="personagem">
-                        <p>nome: {personagem.personagemNome}</p>
-                    </div>
-                ))}
-                <div className="newCharacter">
-
+            <section className="home">
+                <div className="greetings">
+                    <h3>Olá {Cookies.get("userNome")}</h3>
+                    <h4>sua aventura o aguarda</h4>
                 </div>
-            </div>
-        </section>
+                <div className="personagens">
+                    {personagens?.map((personagem: Character) => (
+                        <div className="personagem">
+                            <p>nome: {personagem.personagemNome}</p>
+                        </div>
+                    ))}
+                    <div onClick={toggleModal} className="newCharacter">
+                        <div className="backdrop">
+                            <p>+</p>
+                        </div>
+                        <div className="name">
+                            <p>Novo personagem</p>
+                        </div>
+                    </div>
+                </div>
+                <img className="backgroundGradient" src={backgroundGradient} alt="" />
+                <img className="desert" draggable={false} src={desert} alt="" />
+
+            </section>
+            <CharacterCreateModal modal={modal} toggleModal={toggleModal} />
+        </div>
     )
 }
 
