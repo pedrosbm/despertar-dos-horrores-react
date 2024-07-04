@@ -1,3 +1,5 @@
+import "../styles/Modal.scss"
+import { IoClose } from "react-icons/io5";
 
 type modalProps = {
     modal: boolean,
@@ -5,12 +7,14 @@ type modalProps = {
 }
 
 const CharacterCreateModal = ({modal, toggleModal} : modalProps) => {
-
-
     if(modal) return(
-        <div>
-            <h1>pênis</h1>
-            <button onClick={toggleModal}>Fechar</button>
+        <div className="modal">
+            <div className="modalBox">
+                <IoClose onClick={toggleModal} className="closeButton"/>
+                <div className="formulario">
+                    
+                </div>
+            </div>
         </div>
     )
 }

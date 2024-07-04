@@ -49,7 +49,7 @@ const Cadastro = () => {
                 navigate("/")
             }).catch(error => {
                 console.error("Erro ao fazer requisição - ", error)
-                throw new Error
+                throw new Error()
             }).finally(() => setSubmiting(false)), {
                 success: "Concluido",
                 error: "Ocorreu algum erro",

@@ -44,7 +44,7 @@ const Login = () => {
             navigate("/")
         }).catch(error => {
             console.error("Erro ao fazer requisição - ", error)
-            throw new Error
+            throw new Error()
         }).finally(() => setSubmiting(false)), {
             success: "Logado com sucesso",
             error: "Ocorreu algum erro",

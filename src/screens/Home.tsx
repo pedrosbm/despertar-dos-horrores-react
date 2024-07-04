@@ -76,7 +76,6 @@ const Home = () => {
                 </div>
                 <img className="backgroundGradient" src={backgroundGradient} alt="" />
                 <img className="desert" draggable={false} src={desert} alt="" />
-
             </section>
             <CharacterCreateModal modal={modal} toggleModal={toggleModal} />
         </div>

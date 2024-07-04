@@ -23,4 +23,9 @@ type Character = {
     usuario?: User
 }
 
+type Aura = {
+    auraId: number,
+    auraPrincipal: string
+}
+
 export type { User, Character }
