@@ -7,7 +7,7 @@ type User = {
 type Character = {
     personagemId?: number,
     personagemNome?: string,
-    personagemImagem: Blob,
+    personagemImagem?: Blob,
     hp?: number,
     mp?: number,
     vitalidade?: number,
@@ -28,4 +28,4 @@ type Aura = {
     auraPrincipal: string
 }
 
-export type { User, Character }
+export type { User, Character, Aura }

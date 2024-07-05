@@ -1,4 +1,15 @@
+@keyframes in {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
 .modal {
+    animation: in 300ms;
     position: fixed;
     top: 0;
     left: 0;
@@ -13,8 +24,9 @@
 
     .modalBox {
         background-color: rgb(9, 2, 14);
-        width: 60vw;
-        height: 70vh;
+        box-shadow: 0px 0px 30px 5px rgba(78, 45, 78, 0.73);
+        width: 70vw;
+        height: 80vh;
         padding: 2rem;
 
         display: flex;
