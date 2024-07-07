@@ -4,11 +4,11 @@ import { Character } from "../types"
 import { toast } from "react-toastify"
 import Cookies from "js-cookie"
 import HeaderSecundario from "../components/HeaderSecundario"
-import "../styles/Home.scss"
+import CharacterCreateModal from "../components/Modal/CharacterCreateModal"
 import desert from "../assets/desert-background.png"
 import backgroundGradient from "../assets/degradê deserto.jpg"
-import CharacterCreateModal from "../components/Modal/CharacterCreateModal"
 
+import "../styles/Home.scss"
 
 const apiUrl = import.meta.env.BASE_URL as string
 

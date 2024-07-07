@@ -1,0 +1,101 @@
+.auraSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 100%;
+    }
+
+    .selected   {
+        position: relative;
+        bottom: 17rem;
+        height: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h4  {
+            width: 20rem;
+            text-wrap: wrap;
+        }
+
+        p   {
+            margin-top: 1rem;
+            text-align: center;
+            width: 15rem;
+        }
+
+        hr  {
+            width: 80%;
+        }
+    }
+    .auras  {
+        position: relative;
+
+        .columns    {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 0;
+
+            .a1 {
+                position: relative;
+                top: 3.3rem;
+                right: 2.5rem;
+            }
+            
+            .a2 {
+                position: relative;
+                top: 9.8rem;
+                right: 2.5rem;
+            }
+            
+            .a3 {
+                position: relative;
+                bottom: 2.5rem;
+            }
+            
+            .a4 {
+                position: relative;
+                top: 15.5rem;
+            }
+
+            .a5 {
+                position: relative;
+                top: 3.3rem;
+                left: 2.5rem;
+            }
+            
+            .a6 {
+                position: relative;
+                top: 9.8rem;
+                left: 2.5rem;
+            }
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            button  {
+                background-color: transparent;
+                border: none;
+                
+                .icon   {
+                    cursor: pointer;
+                    transition: 200ms;
+                    color: white;
+                    border-radius: 100%;
+                    background-color: rgb(9, 2, 14);
+                    font-size: 5rem;
+                }
+
+                .icon:hover   {
+                    box-shadow: 0px 0px 30px 10px rgba(78, 45, 78, 1);
+                }
+            }
+        }
+    }
+}

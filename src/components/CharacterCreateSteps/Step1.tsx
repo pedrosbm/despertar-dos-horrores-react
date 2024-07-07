@@ -2,12 +2,14 @@ import { ChangeEvent } from "react"
 
 import line from "../../assets/ornamented-line.png"
 import "../../styles/CharacterCreationSteps/Step1.scss"
+import { Character } from "../../types"
 
 type StepProps = {
     changeCharacter: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void,
+    character: Character | undefined
 }
 
-const Step1 = ({changeCharacter} : StepProps) => {
+const Step1 = ({changeCharacter, character} : StepProps) => {
     return (
         <div className="step step1">
             <div className="title">
@@ -15,7 +17,7 @@ const Step1 = ({changeCharacter} : StepProps) => {
                 <img src={line} />
             </div>
             <div className="form characterName">
-                <input onChange={changeCharacter} name="personagemNome" minLength={3} required type="text" placeholder="" />
+                <input onChange={changeCharacter} value={character?.personagemNome} autoComplete="off" name="personagemNome" minLength={3} required type="text" placeholder="Norland" />
             </div>
         </div>
     )

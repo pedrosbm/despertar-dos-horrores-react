@@ -1,3 +1,17 @@
+@keyframes newStep {
+    0% {
+        position: relative;
+        bottom: 10px;
+        opacity: 0%;
+    }
+    
+    100%{
+        position: relative;
+        bottom: 0;
+        opacity: 100%;
+    }
+}
+
 .charaCreation {
     width: 100%;
     height: 100%;
@@ -9,17 +23,28 @@
     color: white;
     overflow-y: auto;
 
-    .step   {
-        .form   {
-            margin-block: 1rem;
+    .steps {
+        height: 100%;
+    }
+
+    .step {
+        animation: newStep 500ms ease-in-out;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .form {
+            margin-block: 3rem;
         }
 
-        .title  {
+        .title {
             position: sticky;
             top: 0;
+            z-index: 1;
             backdrop-filter: blur(5px);
             background-color: rgba(9, 2, 14, 0.6);
-            h1  {
+
+            h1 {
                 font-size: 3rem;
                 margin-block: 0;
             }
@@ -29,6 +54,7 @@
 
     .pageControll {
         display: flex;
+        margin-top: 5rem;
 
         button {
             cursor: pointer;
