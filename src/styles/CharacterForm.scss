@@ -9,31 +9,43 @@
     color: white;
     overflow-y: auto;
 
-    h1  {
-        font-size: 3rem;
+    .step   {
+        .form   {
+            margin-block: 1rem;
+        }
+
+        .title  {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(5px);
+            background-color: rgba(9, 2, 14, 0.6);
+            h1  {
+                font-size: 3rem;
+                margin-block: 0;
+            }
+        }
+
     }
 
-    .steps  {
+    .pageControll {
+        display: flex;
 
-    }
-
-    .pageControll   {
-        button  {
+        button {
             cursor: pointer;
             color: white;
-            line-height: 0px;
             padding: 1rem;
             border: 2px solid antiquewhite;
             background: transparent;
-            .icon   {
-            }
+            font-size: large;
+            display: flex;
+            align-items: center;
         }
-        
-        .previous   {
+
+        .previous {
             border-radius: 1rem 0rem 0rem 1rem;
         }
 
-        .next   {
+        .next {
             border-radius: 0rem 1rem 1rem 0rem;
             background-color: antiquewhite;
             color: black;
@@ -45,17 +57,17 @@
 // Scroll
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
     height: 10px;
 }
 
 ::-webkit-scrollbar-track {
     background: transparent;
-    border: 1px solid rgb(55, 18, 65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #5d246e;
+    background: #ffffff;
     border-radius: 10px;
 }

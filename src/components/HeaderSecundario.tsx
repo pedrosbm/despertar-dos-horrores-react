@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-import styles from "../styles/HeaderSecundario.module.scss"
+import styles from "../styles/Header/HeaderSecundario.module.scss"
 
 const HeaderSecundario = () => {
     return (

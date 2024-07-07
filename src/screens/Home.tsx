@@ -7,7 +7,7 @@ import HeaderSecundario from "../components/HeaderSecundario"
 import "../styles/Home.scss"
 import desert from "../assets/desert-background.png"
 import backgroundGradient from "../assets/degradê deserto.jpg"
-import CharacterCreateModal from "../components/CharacterCreateModal"
+import CharacterCreateModal from "../components/Modal/CharacterCreateModal"
 
 
 const apiUrl = import.meta.env.BASE_URL as string
@@ -24,7 +24,6 @@ const Home = () => {
     // functions
 
     const toggleModal = () => {
-        console.log(modal)
         setModal(!modal)
     }
 
