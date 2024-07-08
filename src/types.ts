@@ -10,6 +10,7 @@ type Character = {
     personagemImagem?: Blob,
     hp?: number,
     mp?: number,
+
     vitalidade?: number,
     defesa?: number,
     eneru?: number,
@@ -20,6 +21,7 @@ type Character = {
     despertarNivel?: number,
     intensidadeAura?: string,
     pontos?: number,
+    
     usuario?: User
 }
 

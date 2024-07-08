@@ -1,3 +1,17 @@
+@keyframes iconShadow {
+    0%{
+        box-shadow: 0px 0px 30px 10px rgb(137, 132, 58);
+    }
+    
+    50%{
+        box-shadow: 0px 0px 30px 10px rgb(174, 172, 154);
+    }
+    
+    100%{
+        box-shadow: 0px 0px 30px 10px rgb(137, 132, 58);
+    }
+}
+
 .auraSelector {
     display: flex;
     justify-content: center;
@@ -7,7 +21,7 @@
         width: 100%;
     }
 
-    .selected   {
+    .current   {
         position: relative;
         bottom: 17rem;
         height: 0;
@@ -90,6 +104,11 @@
                     border-radius: 100%;
                     background-color: rgb(9, 2, 14);
                     font-size: 5rem;
+                }
+
+                .selected   {
+                    transform: scale(1.2);
+                    animation: iconShadow 2s ease-in-out infinite;
                 }
 
                 .icon:hover   {

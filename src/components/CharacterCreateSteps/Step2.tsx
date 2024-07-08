@@ -15,49 +15,60 @@ type StepProps = {
 const Step2 = ({ aura, changeAura }: StepProps) => {
 
     const descriptions = {
-        "Aura": "Forma de poder manifestadas em eneru",
-        "Elementos": "Transforma sua aura em elementos (Fogo, água, vento e terra)",
+        "Aura": "Forma de poder manifestadas com eneru, a energia vital.",
+        "Elementos": "Transforma sua aura em elementos (Fogo, água, vento e terra).",
         "Telecinese": "Consegue controlar objetos ao seu redor, animados ou inanimados.",
         "Controle de aura": "Controla a sua aura, podendo manipular a forma dela e usá-la para atacar ou defender.",
         "Aprimoramento": "Aprimora a sua própria aura temporariamente.",
-        "Intensificação de vibrações": "Você aumenta vibrações, tudo que possibilita ritmos",
-        "Emissão": "Consegue fazer disparos com a sua aura, podendo esses disparos tornarem o elemento que o usuário querer (fogo, água, raio, etc)"  
+        "Intensificação de vibrações": "Você aumenta vibrações, tudo que possibilita ritmos.",
+        "Emissão": "Consegue fazer disparos com a sua aura, podendo esses disparos tornarem o elemento que o usuário querer (fogo, água, raio, etc)."
     }
 
     useEffect(() => {
         let description = document.getElementById("description")
 
-        if(description){
-            if(aura.auraPrincipal == "Elementos"){
+        if (description) {
+            if (aura.auraPrincipal == "Elementos") {
                 description.innerText = descriptions["Elementos"]
             }
 
-            if(aura.auraPrincipal == "Telecinese"){
+            if (aura.auraPrincipal == "Telecinese") {
                 description.innerText = descriptions["Telecinese"]
             }
 
-            if(aura.auraPrincipal == "Controle de aura"){
+            if (aura.auraPrincipal == "Controle de aura") {
                 description.innerText = descriptions["Controle de aura"]
             }
 
-            if(aura.auraPrincipal == "Aprimoramento"){
+            if (aura.auraPrincipal == "Aprimoramento") {
                 description.innerText = descriptions["Aprimoramento"]
             }
 
-            if(aura.auraPrincipal == "Intensificação de vibrações"){
+            if (aura.auraPrincipal == "Intensificação de vibrações") {
                 description.innerText = descriptions["Intensificação de vibrações"]
             }
 
-            if(aura.auraPrincipal == "Emissão"){
+            if (aura.auraPrincipal == "Emissão") {
                 description.innerText = descriptions["Emissão"]
             }
 
-            if(aura.auraPrincipal == null){
+            if (aura.auraPrincipal == null) {
                 description.innerText = descriptions["Aura"]
             }
 
         }
     }, [aura.auraPrincipal])
+
+    const handleChangeAura = (e: MouseEvent<HTMLButtonElement>) => {
+        const buttons = document.getElementsByClassName("icon")
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove("selected")
+        }
+        const button = document.getElementById(e.currentTarget.className)
+        button?.classList.add("selected")
+
+        changeAura(e)
+    }
 
     return (
         <div className="step step2">
@@ -70,21 +81,21 @@ const Step2 = ({ aura, changeAura }: StepProps) => {
                     <div className="auras">
                         <div className="columns">
                             <div className="column">
-                                <button className="a1" onClick={changeAura} value={"Elementos"}><CiCircleQuestion className="icon" /></button>
-                                <button className="a2" onClick={changeAura} value={"Telecinese"}><CiCircleQuestion className="icon" /></button>
+                                <button className="a1" onClick={handleChangeAura} value={"Elementos"}><CiCircleQuestion id="a1" className="icon" /></button>
+                                <button className="a2" onClick={handleChangeAura} value={"Telecinese"}><CiCircleQuestion id="a2" className="icon" /></button>
                             </div>
                             <div className="column">
-                                <button className="a3" onClick={changeAura} value={"Controle de aura"}><CiCircleQuestion className="icon" /></button>
-                                <button className="a4" onClick={changeAura} value={"Aprimoramento"}><CiCircleQuestion className="icon" /></button>
+                                <button className="a3" onClick={handleChangeAura} value={"Controle de aura"}><CiCircleQuestion id="a3" className="icon" /></button>
+                                <button className="a4" onClick={handleChangeAura} value={"Aprimoramento"}><CiCircleQuestion id="a4" className="icon" /></button>
                             </div>
                             <div className="column">
-                                <button className="a5" onClick={changeAura} value={"Intensificação de vibrações"}><CiCircleQuestion className="icon" /></button>
-                                <button className="a6" onClick={changeAura} value={"Emissão"}><CiCircleQuestion className="icon" /></button>
+                                <button className="a5" onClick={handleChangeAura} value={"Intensificação de vibrações"}><CiCircleQuestion id="a5" className="icon" /></button>
+                                <button className="a6" onClick={handleChangeAura} value={"Emissão"}><CiCircleQuestion id="a6" className="icon" /></button>
                             </div>
                         </div>
                         <img draggable={false} src={poligon} />
                     </div>
-                    <div className="selected">
+                    <div className="current">
                         <h4 >{aura?.auraPrincipal || "Aura"}</h4>
                         <hr />
                         <p id="description"></p>

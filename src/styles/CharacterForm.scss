@@ -34,11 +34,12 @@
         height: 100%;
 
         .form {
-            margin-block: 3rem;
+            margin-block: 5rem;
         }
 
         .title {
             position: sticky;
+            width: 35rem;
             top: 0;
             z-index: 1;
             backdrop-filter: blur(5px);
