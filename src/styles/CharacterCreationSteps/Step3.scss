@@ -1,45 +1,69 @@
-.atributes  {
-    display: flex;
-    justify-content: space-between;
-    margin-block: 2rem;
-
-    .atribute   {
-
-        .switch {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            p   {
-                padding: 0.3rem;
-                width: 2rem;
-            }
-
-            button  {
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                border: 1px solid;
-                width: 1.5rem;
-                height: 1.5rem;
-                font-size: 1.3rem;
-
-            }
-
-            button:first-child  {
-                border-radius: 10px 0px 0px 10px;
-            }
-
-            button:last-child  {
-                border-radius: 0px 10px 10px 0px;
-            }
-        }
+.points {
+    .remaining {
+        position: relative;
+        right: 13rem;
     }
 
-    hr  {
-        height: auto;
-        border: inset 1px gray;
+    .radarChart {
+        position: relative;
+        right: 0.8rem;
+    }
+
+    .atributes {
+        display: flex;
+        justify-content: space-between;
+        margin-block: 2rem;
+
+        .atribute {
+
+            .switch {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    padding: 0.3rem;
+                    width: 2rem;
+                }
+
+                button {
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    border: 1px solid;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    font-size: 1.3rem;
+                }
+                
+                button:first-child {
+                    transition: 200ms;
+                    border-radius: 10px 0px 0px 10px;
+                }
+                
+                button:first-child:hover {
+                    background-color: rgb(195, 69, 69);
+                    color: white;
+                    box-shadow: 0px 0px 10px 0px red;
+                }
+                
+                button:last-child {
+                    border-radius: 0px 10px 10px 0px;
+                }
+
+                button:last-child:hover {
+                    background-color: rgb(195, 69, 176);
+                    color: white;
+                    box-shadow: 0px 0px 10px 0px violet;
+                }
+            }
+        }
+
+        hr {
+            height: auto;
+            border: inset 1px gray;
+        }
     }
 }

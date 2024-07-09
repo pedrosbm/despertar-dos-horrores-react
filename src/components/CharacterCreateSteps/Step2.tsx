@@ -15,7 +15,7 @@ type StepProps = {
 const Step2 = ({ aura, changeAura }: StepProps) => {
 
     const descriptions = {
-        "Aura": "Forma de poder manifestadas com eneru, a energia vital.",
+        "Aura": "Escolha uma aura para ver seus detalhes.",
         "Elementos": "Transforma sua aura em elementos (Fogo, água, vento e terra).",
         "Telecinese": "Consegue controlar objetos ao seu redor, animados ou inanimados.",
         "Controle de aura": "Controla a sua aura, podendo manipular a forma dela e usá-la para atacar ou defender.",

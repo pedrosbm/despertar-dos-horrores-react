@@ -64,8 +64,7 @@ const Step3 = ({ changeAtribute, character }: StepProps) => {
                 <img src={line} />
             </div>
             <div className="form points">
-                <p>Pontos distribuidos entre os atributos adicionarão 2 níveis.</p>
-                <p>Pontos restantes: <strong>{character?.pontos}</strong></p>
+                <p>Atributos sobem 2 níveis por ponto distribuido.</p>
                 <div className="atributes">
                     <div className="atribute">
                         <p>Vitalidade</p>
@@ -121,6 +120,7 @@ const Step3 = ({ changeAtribute, character }: StepProps) => {
                         </div>
                     </div>
                 </div>
+                <p className="remaining">Pontos restantes: <strong>{character?.pontos}</strong></p>
                 <div className="radarChart">
                     <RadarChart
                         data={data}

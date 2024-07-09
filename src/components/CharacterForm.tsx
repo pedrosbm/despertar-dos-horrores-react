@@ -31,13 +31,20 @@ const CharacterForm = () => {
         }
     }
 
+    const validateStep3 = () => {
+        if(character.pontos > 0){
+            throw new Error(`Você ainda pode distribuir ${character.pontos} ponto(s).`)
+        }
+    }
+
     const nextStep = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         try {
             step == 1 && validateStep1()
+            step == 3 && validateStep3()
             setStep(step + 1)
         } catch (error: any) {
-            toast.warn(error.message)
+            toast.info(error.message)
         }
     }
 
