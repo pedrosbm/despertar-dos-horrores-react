@@ -24,7 +24,7 @@
     overflow-y: auto;
 
     .steps {
-        height: 100%;
+        height: max-content;
     }
 
     .step {
@@ -33,10 +33,6 @@
         flex-direction: column;
         height: 100%;
 
-        .form {
-            margin-block: 5rem;
-        }
-
         .title {
             position: sticky;
             width: 35rem;
@@ -44,6 +40,7 @@
             z-index: 1;
             backdrop-filter: blur(5px);
             background-color: rgba(9, 2, 14, 0.6);
+            margin-bottom: 1rem;
 
             h1 {
                 font-size: 3rem;
@@ -55,7 +52,7 @@
 
     .pageControll {
         display: flex;
-        margin-top: 5rem;
+        margin-top: 1rem;
 
         button {
             cursor: pointer;

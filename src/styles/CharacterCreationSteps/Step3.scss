@@ -1,0 +1,45 @@
+.atributes  {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 2rem;
+
+    .atribute   {
+
+        .switch {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p   {
+                padding: 0.3rem;
+                width: 2rem;
+            }
+
+            button  {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                border: 1px solid;
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 1.3rem;
+
+            }
+
+            button:first-child  {
+                border-radius: 10px 0px 0px 10px;
+            }
+
+            button:last-child  {
+                border-radius: 0px 10px 10px 0px;
+            }
+        }
+    }
+
+    hr  {
+        height: auto;
+        border: inset 1px gray;
+    }
+}

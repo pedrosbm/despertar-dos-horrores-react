@@ -11,17 +11,17 @@ type Character = {
     hp?: number,
     mp?: number,
 
-    vitalidade?: number,
-    defesa?: number,
-    eneru?: number,
-    agilidade?: number,
-    intuicao?: number,
-    conhecimento?: number,
-    forcaFisica?: number,
-    despertarNivel?: number,
+    vitalidade: number,
+    defesa: number,
+    eneru: number,
+    agilidade: number,
+    intuicao: number,
+    conhecimento: number,
+    forcaFisica: number,
+    despertarNivel: number,
+    pontos: number,
+
     intensidadeAura?: string,
-    pontos?: number,
-    
     usuario?: User
 }
 
