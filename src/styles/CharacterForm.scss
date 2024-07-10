@@ -70,6 +70,11 @@
         .previous {
             border-radius: 1rem 0rem 0rem 1rem;
         }
+        .previous:disabled {
+            color: grey;
+            border: 2px solid  grey;
+            border-right: none;
+        }
 
         .next {
             border-radius: 0rem 1rem 1rem 0rem;

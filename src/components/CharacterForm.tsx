@@ -1,12 +1,12 @@
 import { ChangeEvent, MouseEvent, useState } from "react"
 import { Aura, Character } from "../types"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { toast } from "react-toastify";
 
 import "../styles/CharacterForm.scss"
 
 import Step1 from "./CharacterCreateSteps/Step1";
 import Step2 from "./CharacterCreateSteps/Step2";
-import { toast } from "react-toastify";
 import Step3 from "./CharacterCreateSteps/Step3";
 
 const CharacterForm = () => {
@@ -42,6 +42,8 @@ const CharacterForm = () => {
         try {
             step == 1 && validateStep1()
             step == 3 && validateStep3()
+            // TODO validação da quarta etapa
+            // step == 4 && validateStep4()
             setStep(step + 1)
         } catch (error: any) {
             toast.info(error.message)
@@ -53,7 +55,7 @@ const CharacterForm = () => {
         step > 1 && setStep(step - 1)
     }
 
-    const changeCharacter = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const changeCharacter = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         e.preventDefault()
         const { name, value } = e.currentTarget
 
@@ -91,8 +93,8 @@ const CharacterForm = () => {
 
             </section>
             <div className="pageControll">
-                <button className="previous" onClick={previousStep}><IoIosArrowBack className="icon" /> Anterior</button>
-                <button className="next" onClick={nextStep}>Próximo <IoIosArrowForward className="icon" /></button>
+                <button className="previous" disabled={step == 1} onClick={previousStep}><IoIosArrowBack className="icon" /> Anterior</button>
+                <button className="next" onClick={nextStep}>{step == 3 ? "Finalizar" : "Próximo"} <IoIosArrowForward className="icon" /></button>
             </div>
         </section>
     )

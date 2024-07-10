@@ -6,8 +6,11 @@ type User = {
 
 type Character = {
     personagemId?: number,
+
     personagemNome?: string,
     personagemImagem?: Blob,
+    historia?: string
+
     hp?: number,
     mp?: number,
 
@@ -22,7 +25,7 @@ type Character = {
     pontos: number,
 
     intensidadeAura?: string,
-    usuario?: User
+    usuario?: User,
 }
 
 type Aura = {
