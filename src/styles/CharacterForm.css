@@ -1,0 +1,93 @@
+@keyframes newStep {
+  0% {
+    position: relative;
+    bottom: 10px;
+    opacity: 0%;
+  }
+  100% {
+    position: relative;
+    bottom: 0;
+    opacity: 100%;
+  }
+}
+.charaCreation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  color: white;
+  overflow-y: auto;
+}
+.charaCreation .steps {
+  height: -moz-max-content;
+  height: max-content;
+}
+.charaCreation .step {
+  animation: newStep 500ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.charaCreation .step .title {
+  position: sticky;
+  width: 35rem;
+  top: 0;
+  z-index: 1;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(9, 2, 14, 0.6);
+  margin-bottom: 1rem;
+}
+.charaCreation .step .title h1 {
+  font-size: 3rem;
+  margin-block: 0;
+}
+.charaCreation .pageControll {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+.charaCreation .pageControll button {
+  cursor: pointer;
+  color: white;
+  padding: 1rem;
+  border: 2px solid antiquewhite;
+  background: transparent;
+  font-size: large;
+  display: flex;
+  align-items: center;
+}
+.charaCreation .pageControll .previous {
+  border-radius: 1rem 0rem 0rem 1rem;
+}
+.charaCreation .pageControll .previous:disabled {
+  color: grey;
+  border: 2px solid grey;
+  border-right: none;
+}
+.charaCreation .pageControll .next {
+  border-radius: 0rem 1rem 1rem 0rem;
+  background-color: antiquewhite;
+  color: black;
+  font-weight: 600;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}/*# sourceMappingURL=CharacterForm.css.map */

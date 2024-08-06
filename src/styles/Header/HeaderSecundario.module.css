@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.cabeçalho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid gold;
+  min-width: 100%;
+  text-align: center;
+  background-color: rgb(26, 16, 2);
+  box-shadow: 1px 1px 50px -20px gold;
+  padding: 1rem;
+  z-index: 2;
+}
+.cabeçalho h1 {
+  font-size: 3rem;
+  margin-block: 0rem;
+}
+.cabeçalho .logo {
+  text-decoration: none;
+  color: white;
+}/*# sourceMappingURL=HeaderSecundario.module.css.map */

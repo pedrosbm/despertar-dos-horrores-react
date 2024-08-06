@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.cabeçalho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid blueviolet;
+  min-width: 100%;
+  text-align: center;
+  background-color: rgba(36, 5, 24, 0.26);
+  box-shadow: 1px 1px 100px -30px blueviolet;
+  padding: 1rem;
+}
+.cabeçalho h1 {
+  font-size: 3rem;
+  margin-block: 0rem;
+}
+.cabeçalho .logo {
+  text-decoration: none;
+  color: white;
+}/*# sourceMappingURL=Header.module.css.map */

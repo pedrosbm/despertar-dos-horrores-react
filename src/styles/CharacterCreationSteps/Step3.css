@@ -1,0 +1,53 @@
+.points .remaining {
+  position: relative;
+  right: 13rem;
+}
+.points .radarChart {
+  position: relative;
+  right: 0.8rem;
+}
+.points .atributes {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 2rem;
+}
+.points .atributes .atribute .switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.points .atributes .atribute .switch p {
+  padding: 0.3rem;
+  width: 2rem;
+}
+.points .atributes .atribute .switch button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.3rem;
+}
+.points .atributes .atribute .switch button:first-child {
+  transition: 200ms;
+  border-radius: 10px 0px 0px 10px;
+}
+.points .atributes .atribute .switch button:first-child:hover {
+  background-color: rgb(195, 69, 69);
+  color: white;
+  box-shadow: 0px 0px 10px 0px red;
+}
+.points .atributes .atribute .switch button:last-child {
+  border-radius: 0px 10px 10px 0px;
+}
+.points .atributes .atribute .switch button:last-child:hover {
+  background-color: rgb(195, 69, 176);
+  color: white;
+  box-shadow: 0px 0px 10px 0px violet;
+}
+.points .atributes hr {
+  height: auto;
+  border: inset 1px gray;
+}/*# sourceMappingURL=Step3.css.map */

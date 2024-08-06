@@ -1,0 +1,85 @@
+@keyframes in {
+  from {
+    position: relative;
+    top: 20px;
+  }
+  to {
+    position: relative;
+    top: 0;
+  }
+}
+.formulario {
+  background: rgb(18, 44, 78);
+  background: linear-gradient(236deg, rgb(18, 44, 78) 0%, rgb(8, 25, 48) 30%, rgb(60, 15, 60) 95%);
+  display: flex;
+  justify-content: center;
+  color: white;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.formulario .backgroundTrees {
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  width: 100vw;
+}
+.formulario h2 {
+  animation-name: in;
+  animation-duration: 400ms;
+}
+.formulario form {
+  animation-name: in;
+  animation-duration: 400ms;
+  animation-timing-function: ease;
+  z-index: 1;
+  color: black;
+  min-width: 30rem;
+  background-color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 100px 0px rgba(187, 112, 187, 0.73);
+}
+.formulario form .fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.formulario form .fields .inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.formulario form .fields .inputBox input {
+  padding: 0.5rem 1rem;
+  border: 1.5px solid;
+  border-radius: 2rem;
+}
+.formulario form .fields .inputBox label {
+  position: relative;
+  left: 16px;
+}
+.formulario form .confirmation {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.formulario form .confirmation .link {
+  color: rgb(158, 55, 158);
+}
+.formulario form .confirmation .sendForm {
+  transition: 200ms;
+  color: white;
+  cursor: pointer;
+  border: 1px solid rgb(88, 43, 88);
+  padding: 1rem;
+  background-color: rgb(88, 43, 88);
+  border-radius: 2rem;
+}
+.formulario form .confirmation .sendForm:hover {
+  box-shadow: 1px 1px 20px 0px rgb(129, 52, 129);
+  background-color: rgb(129, 52, 129);
+}/*# sourceMappingURL=Formulario.css.map */
