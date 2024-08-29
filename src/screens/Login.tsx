@@ -9,7 +9,7 @@ import trees from '../assets/forest-background.png'
 import '../styles/Formulario.scss'
 import Header from "../components/Header";
 
-const apiUrl = import.meta.env.BASE_URL as string
+const apiUrl = import.meta.env.VITE_API_URL as string
 
 const Login = () => {
     // states & vars
@@ -29,7 +29,7 @@ const Login = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubmiting(true)
-        toast.promise(fetch(`${apiUrl}/User`, {
+        toast.promise(fetch(`${apiUrl}/users`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
@@ -37,11 +37,11 @@ const Login = () => {
             if (response.ok) {
                 return response.json()
             }
-        }).then((json: any) => {
+        }).then((json) => {
             Cookies.set("logged", "true", { secure: true, sameSite: "Strict" })
             Cookies.set("userId", json.userId, { secure: true, sameSite: "Strict" })
             Cookies.set("userNome", json.userNome, { secure: true, sameSite: "Strict" })
-            navigate("/")
+            navigate("/characters")
         }).catch(error => {
             console.error("Erro ao fazer requisição - ", error)
             throw new Error()

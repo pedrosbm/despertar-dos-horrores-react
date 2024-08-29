@@ -10,7 +10,7 @@ import trees from '../assets/forest-background.png'
 import '../styles/Formulario.scss'
 import Header from '../components/Header';
 
-const apiUrl = import.meta.env.BASE_URL as string
+const apiUrl = import.meta.env.VITE_API_URL as string
 
 const Cadastro = () => {
 

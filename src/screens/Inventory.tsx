@@ -1,6 +1,6 @@
 
 
-const Personagem = () => {
+const Inventory = () => {
     return(
         <>
             
@@ -8,4 +8,4 @@ const Personagem = () => {
     )
 }
 
-export default Personagem
+export default Inventory

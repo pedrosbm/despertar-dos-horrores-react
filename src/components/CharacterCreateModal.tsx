@@ -1,7 +1,7 @@
 import { IoClose } from "react-icons/io5";
-import CharacterForm from "../CharacterForm";
+import CharacterForm from "./CharacterForm";
 
-import "../../styles/CharacterCreateModal.scss"
+import "../styles/CharacterCreateModal.scss"
 
 type modalProps = {
     modal: boolean,
