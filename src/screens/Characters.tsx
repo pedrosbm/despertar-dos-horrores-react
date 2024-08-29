@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Character } from "../types"
 import { toast } from "react-toastify"
 import Cookies from "js-cookie"
 import HeaderSecundario from "../components/HeaderSec"
 import CharacterCreateModal from "../components/CharacterCreateModal"
-import desert from "../assets/desert-background.png"
-import backgroundGradient from "../assets/degradê deserto.jpg"
 
 import "../styles/Characters.scss"
 
@@ -19,7 +17,7 @@ const Characters = () => {
     const isLoggedIn = Cookies.get("logged") == "true"
 
     // Hooks
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     // functions
     const toggleModal = () => {
@@ -72,8 +70,8 @@ const Characters = () => {
                         </div>
                     </div>
                 </div>
-                <img className="backgroundGradient" src={backgroundGradient} alt="" />
-                <img className="desert" draggable={false} src={desert} alt="" />
+                <img className="backgroundGradient" src="/degrade-deserto.jpg" alt="" />
+                <img className="desert" draggable={false} src="/desert-background.png" alt="" />
             </section>
             <CharacterCreateModal modal={modal} toggleModal={toggleModal} />
         </div>

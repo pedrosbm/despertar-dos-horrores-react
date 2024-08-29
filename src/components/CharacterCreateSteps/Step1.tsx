@@ -1,6 +1,5 @@
 import { ChangeEvent } from "react"
 
-import line from "../../assets/ornamented-line.png"
 import "../../styles/CharacterCreationSteps/Step1.scss"
 import { Character } from "../../types"
 import { CiSquarePlus } from "react-icons/ci";
@@ -15,7 +14,7 @@ const Step1 = ({ changeCharacter, character }: StepProps) => {
         <div className="step step1">
             <div className="title">
                 <h1>Fale sobre o seu explorador</h1>
-                <img src={line} />
+                <img src="/ornamented-line.png" />
             </div>
             <div className="form characterData">
                 <div className="fields">

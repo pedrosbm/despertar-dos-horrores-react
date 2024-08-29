@@ -1,11 +1,9 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { User } from '../types';
 import Cookies from "js-cookie"
-
-import trees from '../assets/forest-background.png'
 
 import '../styles/Formulario.scss'
 import Header from '../components/Header';
@@ -18,7 +16,7 @@ const Cadastro = () => {
     const [user, setUser] = useState<User>();
     const [confirmarSenha, setConfirmarSenha] = useState<string>()
     const [submiting, setSubmiting] = useState<boolean>(false)
-    const isLoggedIn = Cookies.get("logged") == "true"
+    // const isLoggedIn = Cookies.get("logged") == "true"
     
     // hooks
     const navigate = useNavigate()
@@ -42,7 +40,7 @@ const Cadastro = () => {
                 if(response.ok){
                     return response.json()
                 }
-            }).then((json: any) => {
+            }).then((json) => {
                 Cookies.set("logged", "true", {secure: true, sameSite: "Strict"})
                 Cookies.set("userId", json.userId, {secure: true, sameSite: "Strict"})
                 Cookies.set("userNome", json.userNome, { secure: true, sameSite: "Strict" })
@@ -91,7 +89,7 @@ const Cadastro = () => {
                     <input disabled={submiting} className="sendForm" type="submit" name="enviar" id="enviar" />
                 </div>
             </form>
-            <img className="backgroundTrees" src={trees} alt="" />
+            <img className="backgroundTrees" src="/forest-background.png" alt="" />
         </section>
     )
 }

@@ -1,10 +1,8 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../types";
 import Cookies from "js-cookie";
-
-import trees from '../assets/forest-background.png'
 
 import '../styles/Formulario.scss'
 import Header from "../components/Header";
@@ -15,7 +13,7 @@ const Login = () => {
     // states & vars
     const [user, setUser] = useState<User>();
     const [submiting, setSubmiting] = useState<boolean>(false)
-    const isLoggedIn = Cookies.get("logged") == "true"
+    // const isLoggedIn = Cookies.get("logged") == "true"
 
     // hooks
     const navigate = useNavigate()
@@ -78,7 +76,7 @@ const Login = () => {
                     <input disabled={submiting} className="sendForm" type="submit" name="enviar" id="enviar" />
                 </div>
             </form>
-            <img draggable="false" className="backgroundTrees" src={trees} alt="" />
+            <img draggable="false" className="backgroundTrees" src="/forest-background.png" alt="" />
         </section>
     )
 }

@@ -2,17 +2,21 @@ import { MouseEvent, useEffect } from "react"
 import { Aura } from "../../types"
 import { CiCircleQuestion } from "react-icons/ci";
 
-import line from "../../assets/ornamented-line.png"
-import poligon from "../../assets/aura-poligon.png"
-
 import "../../styles/CharacterCreationSteps/Step2.scss"
 
 type StepProps = {
-    changeAura: (e: MouseEvent<HTMLButtonElement>) => void,
+    setAura: React.Dispatch<React.SetStateAction<Aura>>,
     aura: Aura
 }
 
-const Step2 = ({ aura, changeAura }: StepProps) => {
+const Step2 = ({ aura, setAura }: StepProps) => {
+
+    const changeAura = (e: MouseEvent<HTMLButtonElement | HTMLInputElement>) => {
+        e.preventDefault()
+        const { value } = e.currentTarget
+
+        setAura({ ...aura, ["auraPrincipal"]: value })
+    }
 
     const descriptions = {
         "Aura": "Escolha uma aura para ver seus detalhes.",
@@ -25,7 +29,7 @@ const Step2 = ({ aura, changeAura }: StepProps) => {
     }
 
     useEffect(() => {
-        let description = document.getElementById("description")
+        const description = document.getElementById("description")
 
         if (description) {
             if (aura.auraPrincipal == "Elementos") {
@@ -55,7 +59,6 @@ const Step2 = ({ aura, changeAura }: StepProps) => {
             if (aura.auraPrincipal == null) {
                 description.innerText = descriptions["Aura"]
             }
-
         }
     }, [aura.auraPrincipal])
 
@@ -74,7 +77,7 @@ const Step2 = ({ aura, changeAura }: StepProps) => {
         <div className="step step2">
             <div className="title">
                 <h1>Selecione a sua aura</h1>
-                <img src={line} alt="" />
+                <img src="/ornamented-line.png" />
             </div>
             <div className="form auraSelector">
                 <div className="poligon">
@@ -93,7 +96,7 @@ const Step2 = ({ aura, changeAura }: StepProps) => {
                                 <button className="a6" onClick={handleChangeAura} value={"Emissão"}><CiCircleQuestion id="a6" className="icon" /></button>
                             </div>
                         </div>
-                        <img draggable={false} src={poligon} />
+                        <img draggable={false} src="/aura-poligon.png" />
                     </div>
                     <div className="current">
                         <h4 >{aura?.auraPrincipal || "Aura"}</h4>

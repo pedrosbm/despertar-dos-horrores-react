@@ -1,18 +1,31 @@
 import { MouseEvent } from "react"
 import { Character } from "../../types"
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import line from "../../assets/ornamented-line.png"
+import { toast } from "react-toastify";
 import "../../styles/CharacterCreationSteps/Step3.scss"
 
 import '@carbon/charts-react/styles.css'
 import { RadarChart, ChartOptions } from "@carbon/charts-react";
 
 type StepProps = {
-    changeAtribute: (e: MouseEvent<HTMLButtonElement>) => void,
+    setCharacter: React.Dispatch<React.SetStateAction<Character>>,
     character: Character
 }
 
-const Step3 = ({ changeAtribute, character }: StepProps) => {
+const Step3 = ({ setCharacter, character }: StepProps) => {
+
+    const changeAtribute = (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        const { name, value } = e.currentTarget
+        
+        const currentValue = character[name as keyof Character] as number
+        
+        if (value === "add") {
+            character.pontos > 0 ? setCharacter({ ...character, [name]: currentValue + 2, ["pontos"]: character.pontos - 1 }): toast.warn("Você não possui mais pontos")
+        } else if (value === "remove") {
+            setCharacter({ ...character, [name]: currentValue - 2, ["pontos"]: character.pontos + 1 })
+        }
+    }
 
     const data = [
         {
@@ -61,7 +74,7 @@ const Step3 = ({ changeAtribute, character }: StepProps) => {
         <div className="step step3">
             <div className="title">
                 <h1>Distribua seus pontos</h1>
-                <img src={line} />
+                <img src="/ornamented-line.png" />
             </div>
             <div className="form points">
                 <p>Atributos sobem 2 níveis por ponto distribuido.</p>

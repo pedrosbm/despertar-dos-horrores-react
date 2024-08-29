@@ -45,6 +45,8 @@ const CharacterForm = () => {
             // TODO validação da quarta etapa
             // step == 4 && validateStep4()
             setStep(step + 1)
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             toast.info(error.message)
         }
@@ -62,34 +64,12 @@ const CharacterForm = () => {
         setCharacter({ ...character, [name]: value })
     }
 
-    const changeAtribute = (e: MouseEvent<HTMLButtonElement>) => {
-        const { name, value } = e.currentTarget
-        let currentValue: number
-
-        currentValue = character[name as keyof Character] as number
-
-
-        if (value === "add") {
-            character.pontos > 0 ? setCharacter({ ...character, [name]: currentValue + 2, ["pontos"]: character.pontos - 1 }): toast.warn("Você não possui mais pontos")
-        } else if (value === "remove") {
-            setCharacter({ ...character, [name]: currentValue - 2, ["pontos"]: character.pontos + 1 })
-        }
-
-    }
-
-    const changeAura = (e: MouseEvent<HTMLButtonElement | HTMLInputElement>) => {
-        e.preventDefault()
-        const { value } = e.currentTarget
-
-        setAura({ ...aura, "auraPrincipal": value })
-    }
-
     return (
         <section className="charaCreation">
             <section className="steps">
                 {step == 1 && <Step1 character={character} changeCharacter={changeCharacter} />}
-                {step == 2 && <Step2 aura={aura} changeAura={changeAura} />}
-                {step == 3 && <Step3 changeAtribute={changeAtribute} character={character} />}
+                {step == 2 && <Step2 aura={aura} setAura={setAura} />}
+                {step == 3 && <Step3 setCharacter={setCharacter} character={character} />}
 
             </section>
             <div className="pageControll">
