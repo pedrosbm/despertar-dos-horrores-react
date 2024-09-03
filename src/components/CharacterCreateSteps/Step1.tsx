@@ -5,11 +5,19 @@ import { Character } from "../../types"
 import { CiSquarePlus } from "react-icons/ci";
 
 type StepProps = {
-    changeCharacter: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void,
-    character: Character | undefined
+    setCharacter: React.Dispatch<React.SetStateAction<Character>>,
+    character: Character
 }
 
-const Step1 = ({ changeCharacter, character }: StepProps) => {
+const Step1 = ({ setCharacter, character }: StepProps) => {
+
+    const changeCharacter = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        e.preventDefault()
+        const { name, value } = e.currentTarget
+
+        setCharacter({ ...character, [name]: value })
+    }
+
     return (
         <div className="step step1">
             <div className="title">
@@ -20,11 +28,7 @@ const Step1 = ({ changeCharacter, character }: StepProps) => {
                 <div className="fields">
                     <div className="inputBox">
                         <label htmlFor="">Nome</label>
-                        <input onChange={changeCharacter} value={character?.personagemNome} autoComplete="off" name="personagemNome" minLength={3} required type="text" placeholder="Norland" />
-                    </div>
-                    <div className="inputBox">
-                        <label htmlFor="">História</label>
-                        <textarea className="history" required onChange={changeCharacter} name="historia" placeholder="Era uma vez um principe..."></textarea>
+                        <input onChange={changeCharacter} value={character?.nome} autoComplete="off" name="personagemNome" minLength={3} required type="text" placeholder="Norland" />
                     </div>
                 </div>
                 <div className="characterImage">

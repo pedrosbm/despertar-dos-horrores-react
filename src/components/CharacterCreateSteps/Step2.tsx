@@ -15,7 +15,7 @@ const Step2 = ({ aura, setAura }: StepProps) => {
         e.preventDefault()
         const { value } = e.currentTarget
 
-        setAura({ ...aura, ["auraPrincipal"]: value })
+        setAura({ ...aura, ["nome"]: value })
     }
 
     const descriptions = {
@@ -32,35 +32,35 @@ const Step2 = ({ aura, setAura }: StepProps) => {
         const description = document.getElementById("description")
 
         if (description) {
-            if (aura.auraPrincipal == "Elementos") {
+            if (aura.nome == "Elementos") {
                 description.innerText = descriptions["Elementos"]
             }
 
-            if (aura.auraPrincipal == "Telecinese") {
+            if (aura.nome == "Telecinese") {
                 description.innerText = descriptions["Telecinese"]
             }
 
-            if (aura.auraPrincipal == "Controle de aura") {
+            if (aura.nome == "Controle de aura") {
                 description.innerText = descriptions["Controle de aura"]
             }
 
-            if (aura.auraPrincipal == "Aprimoramento") {
+            if (aura.nome == "Aprimoramento") {
                 description.innerText = descriptions["Aprimoramento"]
             }
 
-            if (aura.auraPrincipal == "Intensificação de vibrações") {
+            if (aura.nome == "Intensificação de vibrações") {
                 description.innerText = descriptions["Intensificação de vibrações"]
             }
 
-            if (aura.auraPrincipal == "Emissão") {
+            if (aura.nome == "Emissão") {
                 description.innerText = descriptions["Emissão"]
             }
 
-            if (aura.auraPrincipal == null) {
+            if (aura.nome == null) {
                 description.innerText = descriptions["Aura"]
             }
         }
-    }, [aura.auraPrincipal])
+    }, [aura.nome])
 
     const handleChangeAura = (e: MouseEvent<HTMLButtonElement>) => {
         const buttons = document.getElementsByClassName("icon")
@@ -84,7 +84,7 @@ const Step2 = ({ aura, setAura }: StepProps) => {
                     <div className="auras">
                         <div className="columns">
                             <div className="column">
-                                <button className="a1" onClick={handleChangeAura} value={"Elementos"}><CiCircleQuestion id="a1" className="icon" /></button>
+                                <button className="a1" onClick={handleChangeAura} value={"Elemental"}><CiCircleQuestion id="a1" className="icon" /></button>
                                 <button className="a2" onClick={handleChangeAura} value={"Telecinese"}><CiCircleQuestion id="a2" className="icon" /></button>
                             </div>
                             <div className="column">
@@ -99,7 +99,7 @@ const Step2 = ({ aura, setAura }: StepProps) => {
                         <img draggable={false} src="/aura-poligon.png" />
                     </div>
                     <div className="current">
-                        <h4 >{aura?.auraPrincipal || "Aura"}</h4>
+                        <h4 >{aura?.nome || "Aura"}</h4>
                         <hr />
                         <p id="description"></p>
                     </div>

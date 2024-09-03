@@ -1,36 +1,43 @@
 type User = {
-    userId?: number,
-    userNome?: string,
-    userPassword?: string
+    id?: number,
+    nome?: string,
+    senha?: string
+    cargo?: string
 }
 
 type Character = {
-    personagemId?: number,
+    id?: number,
+    nome?: string,
 
-    personagemNome?: string,
-    personagemImagem?: Blob,
-    historia?: string
-
-    hp?: number,
-    mp?: number,
-
-    vitalidade: number,
-    defesa: number,
+    hp: number,
     eneru: number,
-    agilidade: number,
     intuicao: number,
-    conhecimento: number,
-    forcaFisica: number,
-    despertarNivel: number,
+    agilidade: number,
+    nivelDespertar: number,
     pontos: number,
+    
+    hp_atual?: number,
+    eneru_atual?: number,
 
-    intensidadeAura?: string,
+    personagemImagem?: string,
+
     usuario?: User,
 }
 
 type Aura = {
-    auraId?: number,
-    auraPrincipal?: string
+    id?: number,
+    nome?: string,
+    principal: boolean,
+    nivel: number,
+    personagem?: Character
 }
 
-export type { User, Character, Aura }
+type Item = {
+    id?: number,
+    nome?: string,
+    tipo?: string,
+    icone?: string,
+    descricao?: string,
+    personagem?: Character,
+}
+export type { User, Character, Item, Aura }

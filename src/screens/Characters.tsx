@@ -1,4 +1,4 @@
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Character } from "../types"
 import { toast } from "react-toastify"
@@ -17,7 +17,7 @@ const Characters = () => {
     const isLoggedIn = Cookies.get("logged") == "true"
 
     // Hooks
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     // functions
     const toggleModal = () => {
@@ -26,7 +26,7 @@ const Characters = () => {
 
     useEffect(() => {
         isLoggedIn &&
-            fetch(`${apiUrl}/Personagem/User/${Cookies.get("userId")}`, {
+            fetch(`${apiUrl}/personagem/User/${Cookies.get("userId")}`, {
                 method: "GET"
             }).then(response => {
                 if (response.ok) {
@@ -43,9 +43,9 @@ const Characters = () => {
             })
     }, [])
 
-    // useEffect(() => {
-    //     !isLoggedIn && navigate("Login")
-    // }, [])
+    useEffect(() => {
+        !isLoggedIn && navigate("/")
+    }, [])
 
     return (
         <div>
@@ -58,7 +58,7 @@ const Characters = () => {
                 <div className="personagens">
                     {personagens?.map((personagem: Character) => (
                         <div className="personagem">
-                            <p>nome: {personagem.personagemNome}</p>
+                            <p>nome: {personagem.nome}</p>
                         </div>
                     ))}
                     <div onClick={toggleModal} className="newCharacter">

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../types";
@@ -13,7 +13,7 @@ const Login = () => {
     // states & vars
     const [user, setUser] = useState<User>();
     const [submiting, setSubmiting] = useState<boolean>(false)
-    // const isLoggedIn = Cookies.get("logged") == "true"
+    const isLoggedIn = Cookies.get("logged") == "true"
 
     // hooks
     const navigate = useNavigate()
@@ -27,7 +27,8 @@ const Login = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubmiting(true)
-        toast.promise(fetch(`${apiUrl}/users`, {
+        console.log()
+        toast.promise(fetch(`${apiUrl}/auth`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
@@ -37,8 +38,8 @@ const Login = () => {
             }
         }).then((json) => {
             Cookies.set("logged", "true", { secure: true, sameSite: "Strict" })
-            Cookies.set("userId", json.userId, { secure: true, sameSite: "Strict" })
-            Cookies.set("userNome", json.userNome, { secure: true, sameSite: "Strict" })
+            Cookies.set("userId", json.id, { secure: true, sameSite: "Strict" })
+            Cookies.set("userNome", json.nome, { secure: true, sameSite: "Strict" })
             navigate("/characters")
         }).catch(error => {
             console.error("Erro ao fazer requisição - ", error)
@@ -50,9 +51,9 @@ const Login = () => {
         })
     }
 
-    // useEffect(()=> {
-    //     isLoggedIn && navigate("Home")
-    // }, [])
+    useEffect(()=> {
+        isLoggedIn && navigate("/characters")
+    }, [])
     
     return (
         <section className="formulario">
@@ -62,12 +63,12 @@ const Login = () => {
                 <div className="fields">
                     <div className="inputBox">
                         <label htmlFor="nome">Nome</label>
-                        <input placeholder="John Doe" value={user?.userNome} onChange={handleChange} id="nome" name="userNome" required type="text" />
+                        <input placeholder="John Doe" value={user?.nome} onChange={handleChange} id="nome" name="userNome" required type="text" />
                     </div>
 
                     <div className="inputBox">
                         <label htmlFor="senha">Senha</label>
-                        <input placeholder="********" value={user?.userPassword} onChange={handleChange} id="senha" name="userPassword" required type="password" />
+                        <input placeholder="********" value={user?.senha} onChange={handleChange} id="senha" name="userPassword" required type="password" />
                     </div>
                 </div>
 
