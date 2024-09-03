@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+![Despertar dos horrores](./md/banner.png "Despertar dos horrores")
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Um Rpg original de [Felipe Cardoso](https://github.com/neofelipecardoso)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Esse repositório é dedicado ao versionamento do front end de um projeto de rpg feito em conjunto com [Felipe Cardoso](https://github.com/neofelipecardoso), feito para mestrar a distância e jogar virtualmente.
 
-## Expanding the ESLint configuration
+### Tecnologias do projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<div class="technology">
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1039px-Vitejs-logo.svg.png"></img>
+        vite js
+    </div>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1039px-Vitejs-logo.svg.png"></img>
+        vite
+    </div>
+</div>
 
-- Configure the top-level `parserOptions` property like this:
+<style>
+    .technology{
+        display: flex;
+    }
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+    .technology img{
+        width: 5rem;
+    }
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+    .technology div{
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        gap: 1rem;
+    }
+</style>
