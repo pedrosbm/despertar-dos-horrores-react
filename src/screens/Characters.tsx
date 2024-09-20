@@ -14,7 +14,6 @@ const Characters = () => {
     // States & variables
     const [personagens, setPersonagens] = useState<Character[]>()
     const [modal, setModal] = useState<boolean>(false)
-    const isLoggedIn = Cookies.get("logged") == "true"
 
     // Hooks
     const navigate = useNavigate()

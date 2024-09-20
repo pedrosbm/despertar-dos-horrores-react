@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
-import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../types";
 import Cookies from "js-cookie";
@@ -11,9 +10,8 @@ const apiUrl = import.meta.env.VITE_API_URL as string
 
 const Login = () => {
     // states & vars
-    const [user, setUser] = useState<User>();
+    const [user, setUser] = useState<User>({} as User);
     const [submiting, setSubmiting] = useState<boolean>(false)
-    const isLoggedIn = Cookies.get("logged") == "true"
 
     // hooks
     const navigate = useNavigate()
@@ -27,8 +25,7 @@ const Login = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubmiting(true)
-        console.log()
-        toast.promise(fetch(`${apiUrl}/auth`, {
+        fetch(`${apiUrl}/auth`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
@@ -37,24 +34,18 @@ const Login = () => {
                 return response.json()
             }
         }).then((json) => {
-            Cookies.set("logged", "true", { secure: true, sameSite: "Strict" })
-            Cookies.set("userId", json.id, { secure: true, sameSite: "Strict" })
-            Cookies.set("userNome", json.nome, { secure: true, sameSite: "Strict" })
+            Cookies.set("nome", json.nome, { secure: true, sameSite: "Strict" })
             navigate("/characters")
         }).catch(error => {
             console.error("Erro ao fazer requisição - ", error)
             throw new Error()
-        }).finally(() => setSubmiting(false)), {
-            success: "Logado com sucesso",
-            error: "Ocorreu algum erro",
-            pending: "Enviando dados cadastrais"
-        })
+        }).finally(() => setSubmiting(false))
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         isLoggedIn && navigate("/characters")
     }, [])
-    
+
     return (
         <section className="formulario">
             <Header />

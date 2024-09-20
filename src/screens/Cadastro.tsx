@@ -13,7 +13,7 @@ const apiUrl = import.meta.env.VITE_API_URL as string
 const Cadastro = () => {
 
     // States & Variables
-    const [user, setUser] = useState<User>();
+    const [user, setUser] = useState<User>({} as User);
     const [confirmarSenha, setConfirmarSenha] = useState<string>()
     const [submiting, setSubmiting] = useState<boolean>(false)
     const isLoggedIn = Cookies.get("logged") == "true"
@@ -32,7 +32,7 @@ const Cadastro = () => {
         
         if (user?.senha == confirmarSenha) {
             setSubmiting(true)
-            toast.promise(fetch(`${apiUrl}/usuario`, {
+            fetch(`${apiUrl}/usuario`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(user)
@@ -41,18 +41,12 @@ const Cadastro = () => {
                     return response.json()
                 }
             }).then((json) => {
-                Cookies.set("logged", "true", {secure: true, sameSite: "Strict"})
-                Cookies.set("userId", json.userId, {secure: true, sameSite: "Strict"})
-                Cookies.set("userNome", json.userNome, { secure: true, sameSite: "Strict" })
-                navigate("/")
+                Cookies.set("nome", json.nome, { secure: true, sameSite: "Strict" })
+                navigate("/characters")
             }).catch(error => {
                 console.error("Erro ao fazer requisição - ", error)
                 throw new Error()
-            }).finally(() => setSubmiting(false)), {
-                success: "Concluido",
-                error: "Ocorreu algum erro",
-                pending: "Enviando dados cadastrais"
-            })
+            }).finally(() => setSubmiting(false))
         } else {
             toast.warn("Senhas devem corresponder")
         }
