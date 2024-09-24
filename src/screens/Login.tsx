@@ -1,7 +1,6 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react"
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { ChangeEvent, FormEvent, useContext, useState } from "react"
+import { Link } from "react-router-dom";
 import { User } from "../types";
-import Cookies from "js-cookie";
 
 import '../styles/Formulario.scss'
 import Header from "../components/Header";
@@ -9,15 +8,12 @@ import { AuthContext } from "@/providers/AuthContext";
 
 const Login = () => {
     // states & vars
-    const [user, setUser] = useState<User>({} as User);
+    const [user, setUser] = useState<User>({ cargo: "PLAYER" } as User);
     const [submiting, setSubmiting] = useState<boolean>(false)
-    const { isLoggedIn } = useContext(AuthContext)
-
-    // hooks
-    const navigate = useNavigate()
+    const { logar } = useContext(AuthContext)
 
     // functions
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target
         setUser({ ...user, [name]: value })
     }
@@ -25,24 +21,15 @@ const Login = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubmiting(true)
-        fetch(`${apiUrl}/auth`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user)
-        }).then(response => {
-            if (response.ok) {
-                return response.json()
-            }
-        }).then((json) => {
-            Cookies.set("token", json.token, { secure: true, sameSite: "Strict" })
-            navigate("/characters")
-        }).catch(error => {
-            console.error("Erro ao fazer requisição - ", error)
-            throw new Error()
-        }).finally(() => setSubmiting(false))
+        console.log(user)
+        logar(user).catch(e => {
+            console.error(e)
+        }).finally(() => {
+            setSubmiting(false)
+        })
     }
 
-    isLoggedIn && <Navigate to="characters"/>
+    // isLoggedIn && <Navigate to="characters"/>
     return (
         <section className="formulario">
             <Header />
@@ -51,12 +38,20 @@ const Login = () => {
                 <div className="fields">
                     <div className="inputBox">
                         <label htmlFor="nome">Nome</label>
-                        <input placeholder="John Doe" value={user?.nome} onChange={handleChange} id="nome" name="userNome" required type="text" />
+                        <input placeholder="John Doe" value={user?.nome} onChange={handleChange} id="nome" name="nome" required type="text" />
                     </div>
 
                     <div className="inputBox">
                         <label htmlFor="senha">Senha</label>
-                        <input placeholder="********" value={user?.senha} onChange={handleChange} id="senha" name="userPassword" required type="password" />
+                        <input placeholder="********" value={user?.senha} onChange={handleChange} id="senha" name="senha" required type="password" />
+                    </div>
+
+                    <div className="inputBox">
+                        <label htmlFor="cargo">Cargo</label>
+                        <select value={user?.cargo} onChange={handleChange} id="cargo" name="cargo" required>
+                            <option value="PLAYER" defaultChecked>Player</option>
+                            <option value="MESTRE" >Mestre</option>
+                        </select>
                     </div>
                 </div>
 
