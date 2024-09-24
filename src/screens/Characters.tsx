@@ -14,6 +14,7 @@ const Characters = () => {
     // States & variables
     const [personagens, setPersonagens] = useState<Character[]>()
     const [modal, setModal] = useState<boolean>(false)
+    const isLoggedIn = Cookies.get("token")
 
     // Hooks
     const navigate = useNavigate()
@@ -40,10 +41,6 @@ const Characters = () => {
                 console.error("Erro na requisição - ", err)
                 toast.error("Ocorreu um erro ao obter seus personagens, recarregue a página.", { autoClose: 5000 })
             })
-    }, [])
-
-    useEffect(() => {
-        !isLoggedIn && navigate("/")
     }, [])
 
     return (

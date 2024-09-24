@@ -8,35 +8,20 @@ import Cadastro from "./screens/Cadastro"
 import Characters from "./screens/Characters";
 import Personagem from "./screens/Inventory"
 import Home from "./screens/Home";
+import { useContext } from "react";
+import { AuthContext } from "./providers/AuthContext";
 
 const App = () => {
     return (
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <Router>
-                <Routes>
-                    <Route path="/" Component={Home} />
-                    <Route path="/Characters" Component={Characters} />
-                    <Route path="/Cadastro" Component={Cadastro} />
-                    <Route path="/Login" Component={Login} />
-                    <Route path="/Personagem" Component={Personagem} />
-                </Routes>
-
-                <ToastContainer
-                    position="bottom-left"
-                    autoClose={2500}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss={false}
-                    draggable={false}
-                    pauseOnHover={false}
-                    theme="dark"
-                    transition={Bounce}
-                    stacked={true}
-                />
-            </Router>
-        </ThemeProvider>
+        <Router>
+            <Routes>
+                <Route path="/" Component={Home} />
+                <Route path="/Characters" Component={Characters} />
+                <Route path="/Personagem" Component={Personagem} />
+                <Route path="/Cadastro" Component={Cadastro} />
+                <Route path="/Login" Component={Login} />
+            </Routes>
+        </Router>
     )
 }
 

@@ -1,17 +1,17 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react"
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { User } from "../types";
 import Cookies from "js-cookie";
 
 import '../styles/Formulario.scss'
 import Header from "../components/Header";
-
-const apiUrl = import.meta.env.VITE_API_URL as string
+import { AuthContext } from "@/providers/AuthContext";
 
 const Login = () => {
     // states & vars
     const [user, setUser] = useState<User>({} as User);
     const [submiting, setSubmiting] = useState<boolean>(false)
+    const { isLoggedIn } = useContext(AuthContext)
 
     // hooks
     const navigate = useNavigate()
@@ -34,7 +34,7 @@ const Login = () => {
                 return response.json()
             }
         }).then((json) => {
-            Cookies.set("nome", json.nome, { secure: true, sameSite: "Strict" })
+            Cookies.set("token", json.token, { secure: true, sameSite: "Strict" })
             navigate("/characters")
         }).catch(error => {
             console.error("Erro ao fazer requisição - ", error)
@@ -42,10 +42,7 @@ const Login = () => {
         }).finally(() => setSubmiting(false))
     }
 
-    useEffect(() => {
-        isLoggedIn && navigate("/characters")
-    }, [])
-
+    isLoggedIn && <Navigate to="characters"/>
     return (
         <section className="formulario">
             <Header />
