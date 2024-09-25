@@ -40,4 +40,5 @@ type Item = {
     descricao: string,
     personagem: Character,
 }
+
 export type { User, Character, Item, Aura }
