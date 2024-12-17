@@ -14,7 +14,7 @@ const CharacterForm = () => {
     const [aura, setAura] = useState<Aura>({
         principal: true,
         nivel: 1
-    })
+    } as Aura)
     const [character, setCharacter] = useState<Character>({
         hp: 20,
         eneru: 20,
@@ -22,7 +22,7 @@ const CharacterForm = () => {
         intuicao: 10,
         nivelDespertar: 5,
         pontos: 10
-    })
+    } as Character)
 
     const validateStep1 = () => {
         const nameLength = character?.nome?.length || 0
@@ -44,8 +44,7 @@ const CharacterForm = () => {
             step == 3 && validateStep3()
             setStep(step + 1)
 
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } catch (error: any) {
+         } catch (error: any) {
             toast.info(error.message)
         }
     }

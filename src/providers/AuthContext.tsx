@@ -1,12 +1,14 @@
-import { User } from "@/types"
-import Cookies from "js-cookie"
 import { createContext, PropsWithChildren, useEffect, useState } from "react"
+import Cookies from "js-cookie"
+
+import { User } from "@/types"
 import { toast } from "react-toastify"
 
 type Context = {
     isLoggedIn: boolean,
-    cadastrar: (data: User) => Promise<void>,
-    logar: (data: User) => Promise<void>,
+    isLoading: boolean,
+    cadastrar: (data: User) => void,
+    logar: (data: User) => void,
     logoff: () => void
 }
 
@@ -16,6 +18,7 @@ const apiUrl = import.meta.env.VITE_API_URL as string
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
     const [isLoggedIn, setIsloggedIn] = useState<boolean>(false)
+    const [isLoading, setisLoading] = useState<boolean>(false)
 
     useEffect(() => {
         if (Cookies.get("token") != undefined) {
@@ -23,47 +26,58 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         }
     }, [])
 
-    const cadastrar = async (data : User) => {
+    const cadastrar = async (data: User) => {
+        setisLoading(true)
         await fetch(`${apiUrl}/usuario`, {
-            method:"POST",
-            headers: {"Content-Type": "application/json"},
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(response => {
-            if(response.ok){
+            if (response.ok) {
                 return response.json()
             }
         }).then(json => {
-            Cookies.set("token",json.token)
+            Cookies.set("userid", json.id)
+            Cookies.set("cargo", json.cargo)
+            Cookies.set("", json.cargo)
             setIsloggedIn(true)
         }).catch(e => {
             toast.error(e.Message)
+        }).finally(() => {
+            setisLoading(false)
         })
     }
     
-    const logar = async (data : User) => {
+    const logar = async (data: User) => {
+        setisLoading(true)
         await fetch(`${apiUrl}/login`, {
-            method:"POST",
-            headers: {"Content-Type": "application/json"},
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(response => {
-            if(response.ok){
+            if (response.ok) {
                 return response.json()
             }
         }).then(json => {
-            Cookies.set("token",json.token)
+            Cookies.set("userid", json.id)
+            Cookies.set("cargo", json.cargo)
             setIsloggedIn(true)
         }).catch(e => {
             toast.error(e.Message)
+        }).finally(() => {
+            setisLoading(false)
         })
     }
     
-    const logoff = async () => {
-        Cookies.remove("token")
-        await setIsloggedIn(false)
+    const logoff = () => {
+        setisLoading(true)
+        Cookies.remove("userid")
+        setisLoading(false)
+        setIsloggedIn(false)
     }
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, cadastrar, logar, logoff }}>
+        <AuthContext.Provider value={{ isLoggedIn, cadastrar, logar, logoff, isLoading }}>
             {children}
         </AuthContext.Provider>
     )

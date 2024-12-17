@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { Character } from "../types"
+import { Character } from "@/types"
 import { toast } from "react-toastify"
 import Cookies from "js-cookie"
-import HeaderSecundario from "../components/HeaderSec"
-import CharacterCreateModal from "../components/CharacterCreateModal"
+import HeaderSecundario from "@/components/HeaderSec"
+import CharacterCreateModal from "@/components/CharacterCreateModal"
 
-import "../styles/Characters.scss"
+import "./Characters.scss"
 
 const apiUrl = import.meta.env.VITE_API_URL as string
 

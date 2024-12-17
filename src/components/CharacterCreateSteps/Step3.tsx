@@ -29,14 +29,6 @@ const Step3 = ({ setCharacter, character }: StepProps) => {
 
     const data = [
         {
-            atribute: 'vitalidade',
-            score: character.vitalidade
-        },
-        {
-            atribute: 'defesa',
-            score: character.defesa
-        },
-        {
             atribute: 'eneru',
             score: character.eneru
         },
@@ -47,10 +39,6 @@ const Step3 = ({ setCharacter, character }: StepProps) => {
         {
             atribute: 'intuicao',
             score: character.intuicao
-        },
-        {
-            atribute: 'forcaFisica',
-            score: character.forcaFisica
         },
     ]
 
@@ -80,24 +68,6 @@ const Step3 = ({ setCharacter, character }: StepProps) => {
                 <p>Atributos sobem 2 níveis por ponto distribuido.</p>
                 <div className="atributes">
                     <div className="atribute">
-                        <p>Vitalidade</p>
-                        <div className="switch">
-                            <button disabled={character.vitalidade - 2 < 20} onClick={changeAtribute} name="vitalidade" value={"remove"}><FaMinus /></button>
-                            <p className="vitalidade">{character?.vitalidade}</p>
-                            <button onClick={changeAtribute} name="vitalidade" value={"add"}><FaPlus /></button>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="atribute">
-                        <p>Defesa</p>
-                        <div className="switch">
-                            <button disabled={character.defesa - 2 < 0} onClick={changeAtribute} name="defesa" value={"remove"}><FaMinus /></button>
-                            <p className="defesa">{character?.defesa}</p>
-                            <button onClick={changeAtribute} name="defesa" value={"add"}><FaPlus /></button>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="atribute">
                         <p>Eneru</p>
                         <div className="switch">
                             <button disabled={character.eneru - 2 < 20} onClick={changeAtribute} name="eneru" value={"remove"}><FaMinus /></button>
@@ -121,15 +91,6 @@ const Step3 = ({ setCharacter, character }: StepProps) => {
                             <button disabled={character.intuicao - 2 < 10} onClick={changeAtribute} name="intuicao" value={"remove"}><FaMinus /></button>
                             <p className="intuicao">{character?.intuicao}</p>
                             <button onClick={changeAtribute} name="intuicao" value={"add"}><FaPlus /></button>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="atribute">
-                        <p>Forca Fisica</p>
-                        <div className="switch">
-                            <button disabled={character.forcaFisica - 2 < 20} onClick={changeAtribute} name="forcaFisica" value={"remove"}><FaMinus /></button>
-                            <p className="forcaFisica">{character?.forcaFisica}</p>
-                            <button onClick={changeAtribute} name="forcaFisica" value={"add"}><FaPlus /></button>
                         </div>
                     </div>
                 </div>

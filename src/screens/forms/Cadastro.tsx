@@ -1,18 +1,17 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { User } from '../types';
-
-import '../styles/Formulario.scss'
-import Header from '../components/Header';
 import { AuthContext } from '@/providers/AuthContext';
+import { Link } from 'react-router-dom';
+import { User } from '@/types'; 
+
+import './Formulario.scss'
+import Header from '@/components/Header';
 
 const Cadastro = () => {
 
     // States & Variables
     const [user, setUser] = useState<User>({cargo: "PLAYER"} as User);
     const [confirmarSenha, setConfirmarSenha] = useState<string>()
-    const [submiting, setSubmiting] = useState<boolean>(false)
-    const { cadastrar } = useContext(AuthContext)
+    const { cadastrar, isLoading } = useContext(AuthContext)
 
     // functions
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,15 +21,12 @@ const Cadastro = () => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        setSubmiting(true)
-        cadastrar(user).catch(e => {
-            console.error(e)
-        }).finally(() => {
-            setSubmiting(false)
-        })
+
+        if(user.senha == confirmarSenha){
+            cadastrar(user)
+        }
     }
 
-    // isLoggedIn && <Navigate to="characters"/>
     return (
         <section className="formulario">
             <Header />
@@ -55,7 +51,7 @@ const Cadastro = () => {
 
                 <div className="confirmation">
                     <Link className='link' to="/Login">Já tenho uma conta</Link>
-                    <input disabled={submiting} className="sendForm" type="submit" name="enviar" id="enviar" />
+                    <input disabled={isLoading} className="sendForm" type="submit" name="enviar" id="enviar" />
                 </div>
             </form>
             <img className="backgroundTrees" src="/forest-background.png" alt="" />

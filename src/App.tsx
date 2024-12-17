@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-import 'react-toastify/dist/ReactToastify.css';
-
-import Login from "./screens/Login"
-import Cadastro from "./screens/Cadastro"
-import Characters from "./screens/Characters";
-import Personagem from "./screens/Inventory"
-import Home from "./screens/Home";
 import { useContext } from "react";
 import { AuthContext } from "./providers/AuthContext";
+
+import 'react-toastify/dist/ReactToastify.css';
+
+import Login from "./screens/forms/Login";
+import Cadastro from "./screens/forms/Cadastro";
+import Characters from "./screens/characters/Characters"
+import Personagem from "./screens/Inventory"
+import Home from "./screens/home/Home";
 
 const redirect = (route: string) => {
     return <Navigate to={`/${route}`}/>
@@ -22,8 +23,8 @@ const App = () => {
                 <Route path="/" Component={Home} />
                 <Route path="/Characters" Component={isLoggedIn ? Characters : () => redirect("Login")} />
                 <Route path="/Personagem" Component={isLoggedIn ? Personagem : () => redirect("Login")} />
-                <Route path="/Cadastro" Component={!isLoggedIn ? Cadastro : () => redirect("Personagem")} />
-                <Route path="/Login" Component={!isLoggedIn ? Login : () => redirect("Personagem")} />
+                <Route path="/Cadastro" Component={!isLoggedIn ? Cadastro : () => redirect("Characters")} />
+                <Route path="/Login" Component={!isLoggedIn ? Login : () => redirect("Characters")} />
             </Routes>
         </Router>
     )
