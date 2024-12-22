@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { AuthContext } from "@/providers/AuthContext"
+import { AuthContext } from "@/providers/AuthProvider"
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 

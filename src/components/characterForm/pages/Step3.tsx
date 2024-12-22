@@ -1,8 +1,9 @@
 import { MouseEvent } from "react"
-import { Character } from "../../types"
+import { Character } from "../../../types"
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { toast } from "react-toastify";
-import "../../styles/CharacterCreationSteps/Step3.scss"
+
+import "./Step3.scss"
 
 import '@carbon/charts-react/styles.css'
 import { RadarChart, ChartOptions } from "@carbon/charts-react";

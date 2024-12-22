@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 
 import "./globals.css"
-import './styles/Config.scss'
+import './Config.scss'
 
 import { ThemeProvider } from './components/ThemeProvider'
 import { Bounce, ToastContainer } from 'react-toastify'
-import { AuthProvider } from './providers/AuthContext'
+import { AuthProvider } from './providers/AuthProvider'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

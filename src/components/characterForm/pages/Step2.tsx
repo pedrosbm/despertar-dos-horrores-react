@@ -1,8 +1,8 @@
 import { MouseEvent, useEffect } from "react"
-import { Aura } from "../../types"
+import { Aura } from "../../../types"
 import { CiCircleQuestion } from "react-icons/ci";
 
-import "../../styles/CharacterCreationSteps/Step2.scss"
+import "./Step2.scss"
 
 type StepProps = {
     setAura: React.Dispatch<React.SetStateAction<Aura>>,

@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { AuthContext } from '@/providers/AuthContext';
+import { AuthContext } from '@/providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { User } from '@/types';
 

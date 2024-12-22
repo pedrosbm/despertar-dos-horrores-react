@@ -4,7 +4,7 @@ import { Character } from "@/types"
 import { toast } from "react-toastify"
 import Cookies from "js-cookie"
 import HeaderSecundario from "@/components/HeaderSec"
-import CharacterCreateModal from "@/components/CharacterCreateModal"
+import CharacterCreateModal from "@/components/characterForm/modal/CharacterCreateModal"
 
 import "./Characters.scss"
 

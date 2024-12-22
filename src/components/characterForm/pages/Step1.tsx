@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react"
 
-import "../../styles/CharacterCreationSteps/Step1.scss"
-import { Character } from "../../types"
+import "./Step1.scss"
+import { Character } from "../../../types"
 import { CiSquarePlus } from "react-icons/ci";
 
 type StepProps = {

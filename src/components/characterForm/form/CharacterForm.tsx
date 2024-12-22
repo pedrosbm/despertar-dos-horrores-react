@@ -1,13 +1,13 @@
 import { MouseEvent, useState } from "react"
-import { Aura, Character } from "../types"
+import { Aura, Character } from "../../../types"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { toast } from "react-toastify";
 
-import "../styles/CharacterForm.scss"
+import "./CharacterForm.scss"
 
-import Step1 from "./CharacterCreateSteps/Step1";
-import Step2 from "./CharacterCreateSteps/Step2";
-import Step3 from "./CharacterCreateSteps/Step3";
+import Step1 from "../pages/Step1";
+import Step2 from "../pages/Step2";
+import Step3 from "../pages/Step3";
 
 const CharacterForm = () => {
     const [step, setStep] = useState<number>(1)
@@ -61,12 +61,15 @@ const CharacterForm = () => {
 
     return (
         <section className="charaCreation">
+            {/* Páginas do formulario */}
             <section className="steps">
                 {step == 1 && <Step1 character={character} setCharacter={setCharacter} />}
                 {step == 2 && <Step2 aura={aura} setAura={setAura} />}
                 {step == 3 && <Step3 setCharacter={setCharacter} character={character} />}
 
             </section>
+
+            {/* Controle de página */}
             <div className="pageControll">
                 <button className="previous" disabled={step == 1} onClick={previousStep}><IoIosArrowBack className="icon" /> Anterior</button>
 
